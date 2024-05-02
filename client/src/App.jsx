@@ -1,8 +1,12 @@
+import '../public/css/bootstrap.min.css';
+import '../public/css/theme.css';
 
 function App() {
 
 	return (
-		<h1>Hello, world!</h1>
+		<div className="container">
+			
+		</div>
 	);
 }
 
