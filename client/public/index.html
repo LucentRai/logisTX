@@ -43,7 +43,8 @@
 					</div>
 				</nav>
 			</header>
-			<main class="px-4">
+
+			<main class="px-4 pt-4">
 				<!-- HERO SECTION -->
 				<div class="row align-items-center g-lg-5">
 					<div class="col-lg-7 text-center text-lg-start">
@@ -51,7 +52,7 @@
 						<p class="col-lg-10 fs-4">Improving Logistics and Supply Chain Productivity & Performance</p>
 					</div>
 					<div class="col-md-10 mx-auto col-lg-5">
-						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" method="post">
 							<div class="form-floating mb-3">
 								<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
 								<label for="floatingInput">Email address</label>
@@ -75,7 +76,7 @@
 						<div class="modal-dialog modal-xl">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h1 class="modal-title fs-5" id="registerModalLabel">Sign Up</h1>
+									<h1 class="modal-title" id="registerModalLabel">Sign Up</h1>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 								<form class="modal-body row g-3 multi-collapse" method="post">
@@ -91,38 +92,21 @@
 										<label for="inputLastname" class="form-label" required>Lastname</label>
 										<input type="text" class="form-control" id="inputLastname" />
 									</div>
-									<div class="col-md-8">
+									<div class="col-md-6">
 										<label for="inputCompany" class="form-label" required>Company Name</label>
 										<input type="text" class="form-control" id="inputCompany" placeholder="Enter Company Name" />
 									</div>
+									<div class="col-md-6">
+										<label for="inputAddress" class="form-label">Address</label>
+										<input type="text" class="form-control" id="inputAddress" placeholder="Enter Company Address" required />
+									</div>
 									<div class="col-md-4">
-										<label for="inputRelationship" class="form-label">Relationship</label>
-										<input type="text"
+										<label for="inputPhone" class="form-label">Phone Number</label>
+										<input type="tel" class="form-control" id="inputPhone" name="phone" required />
 									</div>
-									<div class="col-md-2">
-										<label for="inputGrade" class="form-label">Grade</label>
-										<select id="inputGrade" class="form-select" name="grade">
-											<option selected>Choose Grade</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-										</select>
-									</div>
-									<div class="col-md-2">
-										<label for="inputSection" class="form-label">Section</label>
-										<select id="inputSection" class="form-select" name="section">
-											<option selected>--</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-										</select>
-									</div>
-									<div class="col-md-2">
-										<label for="inputRoll" class="form-label">Roll No.</label>
-										<input type="text" class="form-control" id="inputRoll" name="roll" />
-									</div>
-									<div class="col-md-2">
-										<label for="inputDob" class="form-label">Date of Birth</label>
-										<input type="date" class="form-control" id="inputDob" name="dob" />
+									<div class="col-md-4">
+										<label for="inputEmail" class="form-label">Email</label>
+										<input type="email" class="form-control" id="inputEmail" name="roll" required />
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -168,33 +152,35 @@
 				<div class="px-4">
 					<h2 class="pb-2 border-bottom" id="team">Team</h2>
 					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					<div class="col">
-						<div class="card shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text text-center">190314 Kashmin Shrestha</p>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="bd-placeholder-img card-img-top" width="100%" src="img/Team_Kashmin.jpg" alt="Kashmin Shrestha" />
+								<div class="card-body">
+									<p class="card-text text-center">190314 Kashmin Shrestha</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col">
-						<div class="card shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text text-center">190317 Lucent Rai</p>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="bd-placeholder-img card-img-top" width="100%" src="img/Team_Lucent.jpg" alt="Lucent Rai" />
+								<div class="card-body">
+									<p class="card-text text-center">190317 Lucent Thulung Rai</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col">
-						<div class="card shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text text-center">190338 Ujjwal Babu Tiwari</p>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="bd-placeholder-img card-img-top" width="100%" src="img/Team_Ujjwal.jpg" alt="Ujjwal Babu Tiwari" />
+								<div class="card-body">
+									<p class="card-text text-center">190338 Ujjwal Babu Tiwari</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- END OF TEAM -->
 				</main>
+
 				<footer class="py-3 my-4">
 				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
 					<li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
@@ -204,6 +190,7 @@
 				<p class="text-center text-body-secondary">&copy; 2024 logisTX</p>
 			</footer>
 		</div>
+
 		<script type="module" src="js/bootstrap.min.js"></script>
 	</body>
 </html>
