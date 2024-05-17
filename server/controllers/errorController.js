@@ -1,12 +1,12 @@
 const AppError = require('../utils/AppError');
 
-module.exports = (error, request, response, next) => {
+module.exports = (error, req, res, next) => {
 	error.statusCode = error.statusCode || 500;
 	error.status = error.status || 'Error';
 	error.message = error.message || 'Something went very wrong';
 
 	if(process.env.NODE_ENV === 'development'){
-		sendErrorDev(error, request, response);
+		sendErrorDev(error, req, res);
 		return;
 	}
 
@@ -28,14 +28,14 @@ module.exports = (error, request, response, next) => {
 	}
 
 	e.message = error.message;
-	sendErrorClient(e, request, response);
+	sendErrorClient(e, req, res);
 	return;
 };
 
-function sendErrorDev(error, request, response){
+function sendErrorDev(error, req, res){
 	// for API
-	if(request.originalUrl.startsWith('/api')){
-		return response
+	if(req.originalUrl.startsWith('/api')){
+		return res
 		.status(error.statusCode)
 		.json({
 			status: error.status,
@@ -46,18 +46,18 @@ function sendErrorDev(error, request, response){
 	}
 
 	// for rendered website
-	response.status(error.statusCode)
+	res.status(error.statusCode)
 		.render('error', {
 			title: 'ERROR',
 			message: error.message
 		});
 }
 
-function sendErrorClient(error, request, response){
+function sendErrorClient(error, req, res){
 	// for API
-	if(request.originalUrl.startsWith('/api')){
+	if(req.originalUrl.startsWith('/api')){
 		if(error.isOperational){	// Operational, trusted error
-			return response
+			return res
 				.status(error.statusCode)
 				.json({
 					status: error.status,
@@ -66,7 +66,7 @@ function sendErrorClient(error, request, response){
 		}
 		// Programming or other unknown error
 		console.error(error);
-		return response // send generic message
+		return res // send generic message
 			.status(500)
 			.json({
 				status: 'Error',
@@ -76,7 +76,7 @@ function sendErrorClient(error, request, response){
 
 	// for rendered website
 	if(error.isOperational){	// Operational, trusted error
-		return response
+		return res
 			.status(error.statusCode)
 			.render('error', {
 				title: 'Something went wrong',
@@ -85,7 +85,7 @@ function sendErrorClient(error, request, response){
 	}
 	// Programming or other unknown error
 	console.error(error);
-	response // send generic message
+	res // send generic message
 		.status(500)
 		.render('error', {
 			title: 'Something went wrong',

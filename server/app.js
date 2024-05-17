@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
-const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const compresssion = require('compression');
@@ -13,6 +12,11 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
+
+/****************************** ROUTERS ******************************/
+const userRouter = require('./routes/userRoute');
+
+
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public'))); // all static files will be served through public directory
 
@@ -22,7 +26,8 @@ if(process.env.NODE_ENV === 'development'){
 	app.use(morgan('dev'));
 }
 
-/*** MIDDLEWARE ***/
+
+/****************************** MIDDLEWARES ******************************/
 app.use(compresssion());
 
 // Restrict requests to avoid DOS attacks
@@ -39,15 +44,13 @@ app.use(cookieParser()); // parse data from cookie
 // Data sanitization to prevent NoSQL injections
 app.use(mongoSanitize()); // replaces mongo operators from user input
 
-// Data sanitization against XSS attacks
-app.use(xss());
 
-
-/**** ROUTES ****/
+/****************************** ROUTES ******************************/
+app.use('/api/v1/users', userRouter);
 
 // for unhandled routes
-app.all('*', (request, response, next) => {
-	next(new AppError(`Cannot find ${request.originalUrl} on the server`, 404));
+app.all('*', (req, res, next) => {
+	next(new AppError(`Cannot find ${req.originalUrl} on the server`, 404));
 });
 
 // GLOBAL ERROR HANDLER
