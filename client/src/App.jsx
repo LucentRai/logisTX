@@ -1,12 +1,23 @@
-import '../public/css/bootstrap.min.css';
-import '../public/css/theme.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { lazy } from 'react';
+import { Toaster } from "react-hot-toast";
+
+const AppLayout = lazy(() => import('./pages/AppLayout'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
 
 function App() {
 
 	return (
-		<div className="container">
-			
-		</div>
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route element={<AppLayout />}>
+						<Route index element={<Dashboard />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+			<Toaster />
+		</>
 	);
 }
 

@@ -1,0 +1,22 @@
+@import "bootstrap/scss/bootstrap";
+
+:root {
+	--bs-nav-link-font-size: 0.875rem;
+}
+
+.logo-sm {
+	width: 60px;
+	height: 60px;
+}
+
+#header-company-name:hover {
+	color: initial;
+}
+
+.sidebar a:hover {
+	text-decoration: underline;
+}
+
+.header-container {
+	grid-template-columns: 1fr 2fr;
+}
