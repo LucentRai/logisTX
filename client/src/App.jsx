@@ -1,10 +1,10 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { lazy } from 'react';
 import { Toaster } from "react-hot-toast";
-import Maps from "./pages/Maps";
 
 const AppLayout = lazy(() => import('./pages/AppLayout'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Maps = lazy(() => import('./pages/Maps'));
 
 function App() {
 

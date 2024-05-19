@@ -12,6 +12,13 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
+// Serving static files
+app.use(express.static(path.join(__dirname, '..', 'client', 'public'))); // all static files will be served through public directory
+
+app.set('view engine', 'pug'); // Set template engine to pug
+app.set('views', path.join(__dirname, 'views')); // Set views/templates directory location
+
+
 
 /****************************** ROUTERS ******************************/
 const userRouter = require('./routes/userRoute');
