@@ -9,5 +9,6 @@ const viewRouter = express.Router();
 // viewRouter.use(authController.isLoggedIn);
 
 viewRouter.get('/', viewController.getHomePage);
+viewRouter.get('/app', viewController.getDashboard);
 
 module.exports = viewRouter;
