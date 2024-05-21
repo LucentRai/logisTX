@@ -15,17 +15,10 @@ const app = express();
 // Serving static files
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
-app.set('view engine', 'pug'); // Set template engine to pug
-app.set('views', path.join(__dirname, 'views')); // Set views/templates directory location
-
-
 
 /****************************** ROUTERS ******************************/
 const userRouter = require('./routes/userRoute');
 
-
-// Serving static files
-app.use(express.static(path.join(__dirname, 'public'))); // all static files will be served through public directory
 
 // Logging in development
 if(process.env.NODE_ENV === 'development'){
@@ -54,11 +47,10 @@ app.use(mongoSanitize()); // replaces mongo operators from user input
 
 /****************************** ROUTES ******************************/
 app.use('/api/v1/users', userRouter);
-
-// for unhandled routes
-app.all('*', (req, res, next) => {
-	next(new AppError(`Cannot find ${req.originalUrl} on the server`, 404));
+app.use('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
 });
+
 
 // GLOBAL ERROR HANDLER
 app.use(globalErrorHandler);

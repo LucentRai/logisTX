@@ -19,8 +19,7 @@ function Homepage(){
 			if(res.ok){
 				toast.success('Login Successful');
 				setTimeout(() => {
-					// window.location.href = '/app';
-					toast.success('Redirecting to Dashboard');
+					window.location.href = '/app';
 				}, 2000);
 			}
 			else{
@@ -31,10 +30,6 @@ function Homepage(){
 		.catch(err => {
 			toast.error('Error: ' + err.message);
 		});
-	}
-
-	function handleSignUp(e){
-		e.preventDefault();
 	}
 
 	return (
@@ -101,62 +96,7 @@ function Homepage(){
 						</form>
 					</div>
 					{/* Modal */}
-					<div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-						<div className="modal-dialog modal-xl">
-							<div className="modal-content">
-								<div className="modal-header">
-									<h1 className="modal-title" id="registerModalLabel">Sign Up</h1>
-									<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<form className="modal-body row g-3 multi-collapse" id="registerForm">
-									<div className="col-md-4">
-										<label htmlFor="inputFirstname" className="form-label" required>Firstname</label>
-										<input type="text" className="form-control" id="inputFirstname" />
-									</div>
-									<div className="col-md-4">
-										<label htmlFor="inputMiddlename" className="form-label">Middle Name (Optional)</label>
-										<input type="text" className="form-control" id="inputMiddlename" />
-									</div>
-									<div className="col-md-4">
-										<label htmlFor="inputLastname" className="form-label" required>Lastname</label>
-										<input type="text" className="form-control" id="inputLastname" />
-									</div>
-									<div className="col-md-6">
-										<label htmlFor="inputCompany" className="form-label" required>Company Name</label>
-										<input type="text" className="form-control" id="inputCompany" placeholder="Enter Company Name" />
-									</div>
-									<div className="col-md-6">
-										<label htmlFor="inputAddress" className="form-label">Address</label>
-										<input type="text" className="form-control" id="inputAddress" placeholder="Enter Company Address" required />
-									</div>
-									<div className="col-md-4">
-										<label htmlFor="inputRole" className="form-label">Role</label>
-										<input type="text" className="form-control" id="inputRole" name="role" placeholder="Position in the Company" required />
-									</div>
-									<div className="col-md-4">
-										<label htmlFor="inputPhone" className="form-label">Phone Number</label>
-										<input type="tel" className="form-control" id="inputPhone" name="phone" placeholder="Contact Person Phone Number" required />
-									</div>
-									<div className="col-md-4">
-										<label htmlFor="inputEmail" className="form-label">Email</label>
-										<input type="email" className="form-control" id="inputEmail" name="email" placeholder="Company Email Address" required />
-									</div>
-									<div className="col-md-6">
-										<label htmlFor="inputPassword" className="form-label">Password</label>
-										<input type="password" className="form-control" id="inputPassword" name="password" placeholder="Enter New Password" required />
-									</div>
-									<div className="col-md-6">
-										<label htmlFor="inputPassword2" className="form-label">Confirm Password</label>
-										<input type="password" className="form-control" id="inputPassword2" name="confirmPassword" placeholder="Reenter Password" required />
-									</div>
-									<div className="modal-footer">
-										<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" className="btn btn-primary" onClick={handleSignUp}>Sign Up</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
+					<SignUpModal />
 				</div>
 				{/* END OF HERO SECTION */}
 
@@ -232,6 +172,113 @@ function Homepage(){
 			</footer>
 		</div>
 	);
+}
+
+function SignUpModal(){
+	const [firstname, setFirstname] = useState('');
+	const [middlename, setMiddlename] = useState('');
+	const [lastname, setLastname] = useState('');
+	const [company, setCompany] = useState('');
+	const [address, setAddress] = useState('');
+	const [role, setRole] = useState('');
+	const [phone, setPhone] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [password2, setPassword2] = useState('');
+
+	function handleSignUp(e){
+		e.preventDefault();
+		fetch('/api/v1/users/signup', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				firstname,
+				middlename,
+				lastname,
+				address,
+				role,
+				email,
+				phone,
+				password
+			})
+		})
+		.then(res => {
+			if(res.ok){
+				toast.success('Sign Up Successful. Redirecting to Dashboard');
+				setTimeout(() => {
+					window.location.href = '/app';
+				}, 1000);
+			}
+			else{
+				console.log(res);
+				toast.error('Something went wrong.');
+			}
+		})
+		.catch(err => {
+			toast.error('Error: ' + err.message);
+		});
+	}
+
+	return (
+		<div className="modal fade" id="registerModal" tabIndex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+			<div className="modal-dialog modal-xl">
+				<div className="modal-content">
+					<div className="modal-header">
+						<h1 className="modal-title" id="registerModalLabel">Sign Up</h1>
+						<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<form className="modal-body row g-3 multi-collapse" id="registerForm">
+						<div className="col-md-4">
+							<label htmlFor="inputFirstname" className="form-label" required>Firstname</label>
+							<input type="text" className="form-control" id="inputFirstname" onChange={e => setFirstname(e.target.value)} />
+						</div>
+						<div className="col-md-4">
+							<label htmlFor="inputMiddlename" className="form-label">Middle Name (Optional)</label>
+							<input type="text" className="form-control" id="inputMiddlename" onChange={e => setMiddlename(e.target.value)} />
+						</div>
+						<div className="col-md-4">
+							<label htmlFor="inputLastname" className="form-label" required>Lastname</label>
+							<input type="text" className="form-control" id="inputLastname" onChange={e => setLastname(e.target.value)} />
+						</div>
+						<div className="col-md-6">
+							<label htmlFor="inputCompany" className="form-label" required>Company Name</label>
+							<input type="text" className="form-control" id="inputCompany" placeholder="Enter Company Name" onChange={e => setCompany(e.target.value)} />
+						</div>
+						<div className="col-md-6">
+							<label htmlFor="inputAddress" className="form-label">Address</label>
+							<input type="text" className="form-control" id="inputAddress" placeholder="Enter Company Address" required onChange={e => setAddress(e.target.value)} />
+						</div>
+						<div className="col-md-4">
+							<label htmlFor="inputRole" className="form-label">Role</label>
+							<input type="text" className="form-control" id="inputRole" name="role" placeholder="Position in the Company" required onChange={e => setRole(e.target.value)} />
+						</div>
+						<div className="col-md-4">
+							<label htmlFor="inputPhone" className="form-label">Phone Number</label>
+							<input type="tel" className="form-control" id="inputPhone" name="phone" placeholder="Contact Person Phone Number" required onChange={e => setPhone(e.target.value)} />
+						</div>
+						<div className="col-md-4">
+							<label htmlFor="inputEmail" className="form-label">Email</label>
+							<input type="email" className="form-control" id="inputEmail" name="email" placeholder="Company Email Address" required onChange={e => setEmail(e.target.value)} />
+						</div>
+						<div className="col-md-6">
+							<label htmlFor="inputPassword" className="form-label">Password</label>
+							<input type="password" className="form-control" id="inputPassword" name="password" placeholder="Enter New Password" required onChange={e => setPassword(e.target.value)} />
+						</div>
+						<div className="col-md-6">
+							<label htmlFor="inputPassword2" className="form-label">Confirm Password</label>
+							<input type="password" className="form-control" id="inputPassword2" name="confirmPassword" placeholder="Reenter Password" required onChange={e => setPassword2(e.target.value)} />
+						</div>
+						<div className="modal-footer">
+							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" className="btn btn-primary" onClick={handleSignUp}>Sign Up</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default Homepage;
