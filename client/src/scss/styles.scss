@@ -2,6 +2,7 @@
 
 :root {
 	--bs-nav-link-font-size: 0.875rem;
+	--clr-map-route-line: #6FA1EC;
 }
 
 .logo-sm {
@@ -22,6 +23,6 @@
 }
 
 .leaflet-container {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
 }

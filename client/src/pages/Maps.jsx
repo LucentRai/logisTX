@@ -1,16 +1,7 @@
 import { createContext } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-// import L from 'leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
-import '../scss/leaflet.css';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import RoutingMachine from '../utils/RoutingMachine';
-
-const DefaultIcon = L.icon({
-iconUrl: icon,
-shadowUrl: iconShadow
-});
 
 export const WaypointsContext = createContext();
 
