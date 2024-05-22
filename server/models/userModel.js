@@ -22,16 +22,15 @@ const userSchema = mongoose.Schema({
 		maxLength: [30, 'A lastname must have less or equal than 30 characters'],
 		minLength: [2, 'A lastname must have more or equal than 2 characters']
 	},
-	address: {
-		type: String,
-		trim: true,
-		maxLength: [100, 'An address must have less or equal than 100 characters'],
-		minLength: [4, 'An address must have more or equal than 4 characters']
-	},
 	role: {
 		type: String,
 		required: [true, 'Please provide the role of user'],
 		trim: true
+	},
+	companyId: {
+		type: mongoose.Schema.ObjectId,
+		required: [true, 'Please provide company ID'],
+		ref: 'Company'
 	},
 	email: {
 		type: String,
