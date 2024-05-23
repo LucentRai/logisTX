@@ -2,25 +2,28 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 
+const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX, MIN_PASSWORD_LENGTH} = require('../CONSTANTS');
+
+
 const userSchema = mongoose.Schema({
 	firstname: {
 		type: String,
 		required: [true, 'Please provide firstname'],
 		trim: true,
-		maxLength: [30, 'A firstname must have less or equal than 30 characters'],
-		minLength: [2, 'A firstname must have more or equal than 2 characters']
+		maxLength: [MAX_NAME_LENGTH, `A firstname must have less or equal than ${MAX_NAME_LENGTH} characters`],
+		minLength: [MIN_NAME_LENGTH, `A firstname must have more or equal than ${MIN_NAME_LENGTH} characters`]
 	},
 	middlename: {
 		type: String,
 		trim: true,
-		maxLength: [30, 'A middlename must have less or equal than 30 characters'],
+		maxLength: [MAX_NAME_LENGTH, `A middlename must have less or equal than ${MAX_NAME_LENGTH} characters`],
 	},
 	lastname: {
 		type: String,
 		required: [true, 'Please provide lastname'],
 		trim: true,
-		maxLength: [30, 'A lastname must have less or equal than 30 characters'],
-		minLength: [2, 'A lastname must have more or equal than 2 characters']
+		maxLength: [MAX_NAME_LENGTH, `A lastname must have less or equal than ${MAX_NAME_LENGTH} characters`],
+		minLength: [MIN_NAME_LENGTH, `A lastname must have more or equal than ${MIN_NAME_LENGTH} characters`]
 	},
 	role: {
 		type: String,
@@ -43,14 +46,12 @@ const userSchema = mongoose.Schema({
 		required: [true, 'Please provide your phone number'],
 		unique: true,
 		trim: true,
-		maxLength: [15, 'A phone number must have less or equal than 15 characters'],
-		minLength: [10, 'A phone number must have more or equal than 10 characters'],
-		match: [/^[0-9]+$/, 'Please provide a valid phone number']
+		match: [PHONE_REGEX, 'Please provide a valid phone number']
 	},
 	password: {
 		type: String,
 		required: [true, 'Please provide your password'],
-		minlength: [8, 'A password must have more or equal than 8 characters'],
+		minlength: [MIN_PASSWORD_LENGTH, `A password must have more or equal than ${MIN_PASSWORD_LENGTH} characters`],
 		select: false
 	},
 	active: {

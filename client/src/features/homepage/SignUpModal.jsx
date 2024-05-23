@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import { useReducer} from "react";
 import toast from "react-hot-toast";
 
+import { MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX } from "../../../../server/CONSTANTS";
+
 const initialState = {
+	showFeedback: false,
 	firstname: '',
 	middlename: '',
 	lastname: '',
@@ -13,12 +16,10 @@ const initialState = {
 	email: '',
 	password: '',
 	password2: '',
-	errors: {},
-	valid: []
+	errors: {}
 };
 
 function reducer(state, action){
-	const phoneRegex = /^[+-]?\d{10,13}$/	;
 	const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 	switch (action.type){
@@ -29,46 +30,46 @@ function reducer(state, action){
 			};
 
 		case 'validate':
-			if(state.firstname.length < 3 || state.firstname.length > 30){
-				state.errors.firstname = 'Firstname must be between 3 and 30 characters.';
+			if(state.firstname.length < MIN_NAME_LENGTH || state.firstname.length > MAX_NAME_LENGTH){
+				state.errors.firstname = `Firstname must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
 			}
 			else{
-				state.valid.push('firstname');
+				delete state.errors.firstname;
 			}
 
-			if(state.lastname.length < 3 || state.lastname.length > 30){
-				state.errors.lastname = 'Lastname must be between 3 and 30 characters.';
+			if(state.lastname.length < MIN_NAME_LENGTH || state.lastname.length > MAX_NAME_LENGTH){
+				state.errors.lastname = `Lastname must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
 			}
 			else{
-				state.valid.push('lastname');
+				delete state.errors.lastname;
 			}
 
-			if(state.company.length < 3 || state.company.length > 30){
-				state.errors.company = 'Company Name must be between 3 and 30 characters.';
+			if(state.company.length < MIN_NAME_LENGTH || state.company.length > MAX_NAME_LENGTH){
+				state.errors.company = `Company Name must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
 			}
 			else{
-				state.valid.push('company');
+				delete state.errors.company;
 			}
 
 			if(state.address.length < 4 || state.address.length > 100){
 				state.errors.address = 'Address must be between 4 and 100 characters.';
 			}
 			else{
-				state.valid.push('address');
+				delete state.errors.address;
 			}
 
-			if(phoneRegex.test(state.phone)){
-				state.valid.push('phone');
-			}
-			else{
+			if(!PHONE_REGEX.test(state.phone)){
 				state.errors.phone = 'Invalid Phone Number';
 			}
+			else{
+				delete state.errors.phone;
+			}
 
-			if(emailRegex.test(state.email)){
-				state.valid.push('email');
+			if(!emailRegex.test(state.email)){
+				state.errors.email = 'Invalid Email Address';
 			}
 			else{
-				state.errors.email = 'Invalid Email Address';
+				delete state.errors.email;
 			}
 
 			if(state.password.length < 8){
@@ -78,10 +79,13 @@ function reducer(state, action){
 				state.errors.password = 'Passwords do not match.';
 			}
 			else{
-				state.valid.push('password');
+				delete state.errors.password;
 			}
 
-			return {...state};
+			return {
+				...state,
+				showFeedback: true,
+			};
 
 		default:
 			return state;
@@ -152,17 +156,59 @@ function SignUpModal(){
 						<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 
-					<form className="modal-body row g-3 multi-collapse needs-validation" id="registerForm" onSubmit={e => handleSubmit(e)}>
-						<TextInput label="Firstname" size={4} name="firstname" required error={state.error?.firstname} />
-						<TextInput label="Middle Name (Optional)" size={4} name="middlename" />
-						<TextInput label="Lastname" size={4} name="lastname" required error={state.error?.lastname} />
-						<TextInput label="Company Name" size={6} name="company" placeholder="Enter Company Name" required error={state.error?.company} />
-						<TextInput label="Address" size={6} name="address" placeholder="Enter Company Address" required error={state.error?.address} />
-						<TextInput label="Role" size={4} name="role" placeholder="Position in the Company" required />
-						<TextInput label="Phone Number" size={4} name="phone" placeholder="Contact Person Phone Number" required error={state.error?.phone} />
-						<TextInput label="Email" size={4} name="email" placeholder="Company Email Address" type="email" required error={state.error?.email} />
-						<TextInput label="Password" size={6} name="password" placeholder="Enter New Password" type="password" required error={state.error?.password} />
-						<TextInput label="Confirm Password" size={6} name="password2" placeholder="Reenter Password" type="password" required />
+					<form className="modal-body row g-3 multi-collapse" id="registerForm" onSubmit={e => handleSubmit(e)}>
+						<TextInput
+							label="First Name"
+							size={4}
+							name="firstname"
+							error={state.errors?.firstname}
+							feedback={state.showFeedback} />
+						<TextInput
+							label="Middle Name"
+							size={4}
+							name="middlename"
+							feedback={state.showFeedback}
+							notRequired />
+						<TextInput
+							label="Last Name"
+							size={4}
+							name="lastname"
+							error={state.errors?.lastname} feedback={state.showFeedback} />
+						<TextInput
+							label="Company Name"
+							size={6}
+							name="company"
+							placeholder="Enter Company Name" error={state.errors?.company} feedback={state.showFeedback} />
+						<TextInput
+							label="Address"
+							size={6}
+							name="address"
+							placeholder="Enter Company Address" error={state.errors?.address} feedback={state.showFeedback} />
+						<TextInput
+							label="Role"
+							size={4}
+							name="role"
+							placeholder="Position in the Company" feedback={state.showFeedback} />
+						<TextInput
+							label="Phone Number"
+							size={4}
+							name="phone"
+							placeholder="Contact Person Phone Number" error={state.errors?.phone} feedback={state.showFeedback} />
+						<TextInput
+							label="Email"
+							size={4}
+							name="email"
+							placeholder="Company Email Address" type="email" error={state.errors?.email} feedback={state.showFeedback} />
+						<TextInput
+							label="Password"
+							size={6}
+							name="password"
+							placeholder="Enter New Password" type="password" error={state.errors?.password} feedback={state.showFeedback} />
+						<TextInput
+						label="Confirm Password"
+						size={6}
+						name="password2"
+						placeholder="Reenter Password" type="password" error={state.errors?.password} feedback={state.showFeedback} />
 						<div className="modal-footer">
 							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 							<button type="submit" className="btn btn-primary">Sign Up</button>
@@ -175,12 +221,15 @@ function SignUpModal(){
 	);
 }
 
-function TextInput({label, type, size, name, placeholder, required, error}){
+function TextInput({label, type, size, name, placeholder, notRequired, error, feedback}){
+	const id = `sign-up-${name}`;
+	// console.log(error);
+
 	return (
 		<div className={`col-md-${size}`}> {/* bootstrap col class size */}
-			<label htmlFor={name} className="form-label">{label}</label>
-			<input type={type ?? 'text'} className={`form-control ${error ? 'is-invalid' : 'is-valid}'}`} id={name} name={name} placeholder={placeholder} required={required} />
-			<div className={error ? 'invalid-feedback' : 'valid-feedback'}>
+			<label htmlFor={id} className="form-label">{label}</label>
+			<input type={type ?? 'text'} className={`form-control ${feedback && error ? 'is-invalid' : 'is-valid}'}`} id={id} name={name} placeholder={placeholder} required={!notRequired} />
+			<div className={`${feedback && error ? 'invalid-feedback' : 'valid-feedback'} d-block`} id={id}>
 				{error ?? 'Looks good!'}
 			</div>
 		</div>
@@ -193,8 +242,9 @@ TextInput.propTypes = {
 	size: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
-	required: PropTypes.bool,
-	error: PropTypes.string
+	notRequired: PropTypes.bool,
+	error: PropTypes.string,
+	feedback: PropTypes.bool
 };
 
 export default SignUpModal;
