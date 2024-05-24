@@ -1,4 +1,5 @@
 import {HouseDoorFill, Cart, Map, Archive, Gear, BoxArrowLeft, Truck} from 'react-bootstrap-icons';
+import SidebarDevButtons from '../dev-tools/SidebarDevButtons';
 
 function Sidebar(){
 	return (
@@ -60,6 +61,8 @@ function Sidebar(){
 						</li>
 					</ul>
 
+					{import.meta.env.DEV && <SidebarDevButtons />}
+
 					<hr className="my-3" />
 
 					<ul className="nav flex-column mb-auto">
@@ -81,5 +84,6 @@ function Sidebar(){
 		</div>
 	);
 }
+
 
 export default Sidebar;

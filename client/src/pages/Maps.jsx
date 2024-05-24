@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 import RoutingMachine from '../utils/RoutingMachine';
 
@@ -12,7 +13,7 @@ function Maps(){
 
 	return (
 		<WaypointsContext.Provider value={waypoints}>
-			<MapContainer center={[27.6944, 85.3202]} zoom={13} scrollWheelZoom={false}>
+			<MapContainer center={import.meta.env.MAP_CENTER} zoom={13} scrollWheelZoom={false}>
 				<TileLayer
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
