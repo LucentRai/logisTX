@@ -11,14 +11,15 @@ function Dashboard(){
 					{/*  Left side columns */}
 					<div className="col-lg-8">
 						<div className="row">
-							<InfoCard title="Orders" value="1234" icon={<BoxSeamFill />} iconColor="fees-card" href="/orders">
-								<span className="text-success small pt-1 fw-bold">80%</span> <span className="text-muted small pt-2 ps-1">Fulfilled</span>
+							<InfoCard href="/orders" icon={<BoxSeamFill />} iconStyle={{color: "#ff771d", background: "#ffe3c0"}} title="Orders" value="1234">
+								<span className="text-success small pt-1 fw-bold">80%</span> <span>Fulfilled</span>
 							</InfoCard>
-							<InfoCard title="Employees" value="1234" icon={<FilePersonFill />} iconColor="expense-card" href="/employees">
-								<span className="text-success small pt-1 fw-bold">80%</span> <span className="text-muted small pt-2 ps-1">collected</span>
+							<InfoCard href="/employees"  icon={<FilePersonFill />} iconStyle={{color: "#2eca6a", background: "#d5ffde"}} title="Employees" value="1234">
+								<span className="text-success small pt-1 fw-bold">80%</span> <span>Fulfilled</span>
 							</InfoCard>
-							<InfoCard title="Transports" value="1234" icon={<Truck />} iconColor="employee-card" href="/employees" />
-
+							<InfoCard href="/transports"  icon={<Truck />} iconStyle={{color: "#4154f1", background: "#dce0ff"}}  title="Transports" value="1234">
+								<span className="text-success small pt-1 fw-bold">80%</span> <span>Fulfilled</span>
+							</InfoCard>
 						</div>
 					</div>
 					{/*  End Left side columns */}
