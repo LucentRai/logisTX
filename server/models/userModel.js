@@ -1,9 +1,12 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 
-const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX, MIN_PASSWORD_LENGTH} = require('../CONSTANTS');
-
+const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
+const constants = JSON.parse(jsonConstants);
+const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX, MIN_PASSWORD_LENGTH} = constants;
+const phoneRegexPattern = new RegExp(PHONE_REGEX);
 
 const userSchema = mongoose.Schema({
 	firstname: {
@@ -39,6 +42,7 @@ const userSchema = mongoose.Schema({
 		type: String,
 		validate: [validator.isEmail, 'Please provide a valid email'],
 		required: [true, 'Please provide your email'],
+		unique: true,
 		trim: true
 	},
 	phone: {
@@ -46,7 +50,7 @@ const userSchema = mongoose.Schema({
 		required: [true, 'Please provide your phone number'],
 		unique: true,
 		trim: true,
-		match: [PHONE_REGEX, 'Please provide a valid phone number']
+		match: [phoneRegexPattern, 'Please provide a valid phone number']
 	},
 	password: {
 		type: String,

@@ -1,4 +1,9 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
+
+const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
+const constants = JSON.parse(jsonConstants);
+const {MAX_ADDRESS_LENGTH, MIN_ADDRESS_LENGTH} = constants;
 
 const companySchema = mongoose.Schema({
 	name: {
@@ -12,8 +17,8 @@ const companySchema = mongoose.Schema({
 		type: String,
 		trim: true,
 		required: [true, 'Please provide company address'],
-		maxLength: [100, 'An address must have less or equal than 100 characters'],
-		minLength: [4, 'An address must have more or equal than 4 characters']
+		maxLength: [MAX_ADDRESS_LENGTH, `An address must have less or equal than ${MAX_ADDRESS_LENGTH} characters`],
+		minLength: [MIN_ADDRESS_LENGTH, `An address must have more or equal than ${MIN_ADDRESS_LENGTH} characters`]
 	},
 	warehouses: [{
 		type: mongoose.Schema.ObjectId,
