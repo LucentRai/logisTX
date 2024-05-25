@@ -1,6 +1,7 @@
 const {promisify} = require('util');
 const jwt = require('jsonwebtoken');
 
+const Company = require('../models/companyModel');
 const User = require('../models/userModel');
 
 const catchAsync = require('../utils/catchAsync');
@@ -9,17 +10,21 @@ const AppError = require('../utils/AppError');
 
 
 async function signup(req, res, next){
+	const newCompany = await Company.create({
+		name: req.body.company,
+		address: req.body.address
+	});
+
 	const newUser = await User.create({
 		firstname: req.body.firstname,
 		middlename: req.body.middlename,
 		lastname: req.body.lastname,
-		address: req.body.address,
 		role: req.body.role,
+		companyId: newCompany._id,
 		email: req.body.email,
 		phone: req.body.phone,
 		password: req.body.password,
 	});
-	const url = `${req.protocol}://${req.get('host')}/me`;
 
 
 	sendTokenResponse(newUser, 201, res);
