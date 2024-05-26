@@ -94,7 +94,6 @@ function SignUpModal(){
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		const formDataObject = Object.fromEntries(formData.entries());
-		console.log(formDataObject);
 
 		await dispatch({ type: 'validate', values: formDataObject});
 
