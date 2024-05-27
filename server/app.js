@@ -17,7 +17,11 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 
 /****************************** ROUTERS ******************************/
+const orderRouter = require('./routes/orderRoute');
+const productRouter = require('./routes/productRoute');
+const transportRouter = require('./routes/transportRoute');
 const userRouter = require('./routes/userRoute');
+const warehouseRouter = require('./routes/warehouseRoute');
 
 
 // Logging in development
@@ -46,7 +50,12 @@ app.use(mongoSanitize()); // replaces mongo operators from user input
 
 
 /****************************** ROUTES ******************************/
+app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/products', productRouter);
+app.use('/api/v1/transports', transportRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/warehouses', warehouseRouter);
+
 app.use('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
 });

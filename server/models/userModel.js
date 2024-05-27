@@ -4,8 +4,7 @@ const bcrypt = require('bcryptjs');
 const validator = require('validator');
 
 const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
-const constants = JSON.parse(jsonConstants);
-const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX, MIN_PASSWORD_LENGTH} = constants;
+const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX, MIN_PASSWORD_LENGTH} = JSON.parse(jsonConstants);;
 const phoneRegexPattern = new RegExp(PHONE_REGEX);
 
 const userSchema = mongoose.Schema({

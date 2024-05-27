@@ -14,7 +14,7 @@ const validateOperatingHours = (hours) => {
 	});
 };
 
-const operatingHoursSchema = new Schema({
+const operatingHoursSchema = new mongoose.Schema({
 	monday: {
 		open: { type: String, required: true },
 		close: { type: String, required: true }

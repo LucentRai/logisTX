@@ -20,18 +20,19 @@ const productSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now()
 	},
-	imgUrl: [{
-		type: String,
-	}],
+	imgUrl: {
+		type: [String],
+		default: ['placeholder-product-img.jpg']
+	},
 	weight: {
 		type: Number,
 		required: [true, 'Please provide product weight in kg'],
 		min: [0.01, 'Weight ({VALUE}) is below the minimum allowed ({MIN}) kg.']
 	},
-	dimensions: [{
-		type: Number,
-		required: [true, 'Please provide product dimensions']
-	}]
+	dimensions: {
+		type: [Number],
+		required: [true, 'Please provide product dimensions in meters (length, breadth, height)'],
+	}
 });
 
 /*********************** MIDDLEWARES ***********************/

@@ -1,4 +1,8 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
+
+const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
+const {PAYMENT_METHODS} = JSON.parse(jsonConstants);
 
 const orderSchema = mongoose.Schema({
 	name: {
@@ -39,6 +43,11 @@ const orderSchema = mongoose.Schema({
 	orderItems: {
 		type: [mongoose.Schema.ObjectId],
 		ref: 'Product'
+	},
+	paymentMethod: {
+		type: String,
+		enum: PAYMENT_METHODS,
+		default: 'cash'
 	}
 });
 
