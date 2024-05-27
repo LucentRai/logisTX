@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import OrdersTableOperations from "../features/orders/OrdersTableOperations";
+import Table from "../ui/Table";
 
 const Row = styled.div`
 	display: flex;
@@ -8,6 +9,27 @@ const Row = styled.div`
 `;
 
 function Orders(){
+	const data = [];
+	// const data = [
+	// 	{
+	// 		products: "Product 1, Product 2",
+	// 		customer: "Customer 1",
+	// 		orderedDate: "2021-09-01",
+	// 		status: "Pending"
+	// 	},
+	// 	{
+	// 		products: "Product 1, Product 2",
+	// 		customer: "Customer 2",
+	// 		orderedDate: "2021-09-01",
+	// 		status: "Pending"
+	// 	},
+	// 	{
+	// 		products: "Product 1, Product 2",
+	// 		customer: "Customer 3",
+	// 		orderedDate: "2021-09-01",
+	// 		status: "Pending"
+	// 	},
+	// ];
 
 	return (
 		<>
@@ -17,33 +39,10 @@ function Orders(){
 			</Row>
 			<section className="section">
 				<div className="row">
-					<table className="table table-striped">
-						<thead className="table-primary">
-							<tr>
-								<td>S.N.</td>
-								<td>Products</td>
-								<td>Customer</td>
-								<td>Ordered Date</td>
-								<td>Status</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Furniture</td>
-								<td>Kashmin</td>
-								<td>2024-10-1</td>
-								<td>On Route</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>Furniture</td>
-								<td>Kashmin</td>
-								<td>2024-10-1</td>
-								<td>On Route</td>
-							</tr>
-						</tbody>
-					</table>
+					<Table>
+						<Table.Head columns={["S.N.", "Products", "Customer", "Ordered Date", "Status"]} />
+						<Table.Body data={data} />
+					</Table>
 				</div>
 			</section>
 		</>

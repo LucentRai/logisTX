@@ -1,0 +1,16 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.sort-arrow {
+	margin-left: 0.5rem;
+}
+
+.sort-arrow i {
+	cursor: pointer;
+	line-height: 0.8;
+	color: $blue-500;
+}
+
+.sort-arrow i:hover {
+	color: $blue-700;
+}
