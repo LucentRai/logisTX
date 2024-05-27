@@ -1,30 +1,17 @@
 import PropTypes from 'prop-types';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const TableContext = createContext();
 
-function TableContextProvider({children}) {
+function Table({children}){
 	const [numberOfColumns, setNumberOfColumns] = useState(0);
 
 	return (
 		<TableContext.Provider value={{numberOfColumns, setNumberOfColumns}}>
-			{children}
-		</TableContext.Provider>
-	);
-}
-
-TableContextProvider.propTypes = {
-	children: PropTypes.node.isRequired
-};
-
-function Table({children}){
-
-	return (
-		<TableContextProvider>
-			<table className="table table-striped">
+			<table className="table table-striped table-hover">
 				{children}
 			</table>
-		</TableContextProvider>
+		</TableContext.Provider>
 	);
 }
 
@@ -34,11 +21,15 @@ Table.propTypes = {
 
 function Head({columns}){
 	const {setNumberOfColumns} = useContext(TableContext);
-	setNumberOfColumns(columns.length);
+
+	useEffect(() => {
+		setNumberOfColumns(columns.length + 1);
+	}, [setNumberOfColumns, columns]);
 
 	return (
-		<thead className="table-primary">
+		<thead className="table-primary fw-bold">
 			<tr>
+				<td>S.N.</td>
 				{columns.map((column, index) => (
 					<td key={index}>{column}</td>
 				))}
@@ -51,7 +42,7 @@ Head.propTypes = {
 	columns: PropTypes.array.isRequired
 };
 
-function Body({data}){
+function Body({data, render}){
 	const {numberOfColumns} = useContext(TableContext);
 
 	if(!data.length){
@@ -63,9 +54,7 @@ function Body({data}){
 			{data.map((row, i) => (
 				<tr key={i}>
 					<td>{i + 1}</td>
-					{Object.values(row).map((value, j) => (
-						<td key={j}>{value}</td>
-					))}
+					{render(row)}
 				</tr>
 			))}
 		</tbody>
@@ -74,6 +63,7 @@ function Body({data}){
 
 Body.propTypes = {
 	data: PropTypes.array.isRequired,
+	render: PropTypes.func.isRequired,
 };
 
 Table.Head = Head;
