@@ -7,6 +7,11 @@ import react from '@vitejs/plugin-react';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+	server: {
+		proxy: {
+			'/api': 'http://localhost:8000/api',
+		}
+	},
 	resolve: {
 		alias: {
 			'@': resolve(__dirname, 'src'),
