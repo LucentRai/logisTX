@@ -102,7 +102,7 @@ function SignUpModal(){
 			return;
 		}
 
-		fetch('/api/v1/users/signup', {
+		fetch(`${import.meta.env.VITE_API_USERS}/signup`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -127,7 +127,6 @@ function SignUpModal(){
 				}, 1000);
 			}
 			else{
-				console.log(res);
 				toast.error('Something went wrong.');
 			}
 		})
@@ -230,7 +229,6 @@ function SignUpModal(){
 
 function TextInput({label, type, size, name, placeholder, notRequired, error, feedback}){
 	const id = `sign-up-${name}`;
-	// console.log(error);
 
 	return (
 		<div className={`col-md-${size}`}> {/* bootstrap col class size */}

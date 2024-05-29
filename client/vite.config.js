@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
 	server: {
 		proxy: {
-			'/api': 'http://localhost:8000/api',
+			'/api': 'http://localhost:8000',
 		}
 	},
 	resolve: {

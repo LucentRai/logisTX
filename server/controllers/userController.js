@@ -24,16 +24,6 @@ function filterRequestBody(body, ...allowedFields){
 	return newObj;
 }
 
-async function getUser(req, res, next){
-	if(!req.params.id) return next(new AppError('Please provide user id', 400));
-
-	res.status(200)
-		.json({
-			status: "success",
-			data: await retrieveUserData(req.params.id, next)
-		});
-}
-
 function postUser(req, res){
 	res
 		.status(500)
@@ -71,7 +61,7 @@ module.exports = {
 	deleteMe: catchAsync(deleteMe),
 	getAllUsers: factory.getAll(User),
 	getMe: factory.getMe,
-	getUser: catchAsync(getUser),
+	getUser: factory.getOne(User),
 	postUser,
 	updateMe: catchAsync(updateMe)
 };

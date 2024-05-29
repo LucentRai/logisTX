@@ -14,6 +14,7 @@ async function signup(req, res, next){
 		name: req.body.company,
 		address: req.body.address
 	});
+	console.log(newCompany);
 
 	const newUser = await User.create({
 		firstname: req.body.firstname,
@@ -25,8 +26,8 @@ async function signup(req, res, next){
 		phone: req.body.phone,
 		password: req.body.password,
 	});
-
-
+	console.log(newUser);
+	
 	sendTokenResponse(newUser, 201, res);
 }
 
@@ -34,10 +35,10 @@ async function login(req, res, next){
 	const {email, password} = req.body;
 
 	if(!email || !password){ // check if email number or password exist
-		return next(new AppError('Email and password required.', 400));
+		return next(new AppError('Email and Password required.', 400));
 	}
 
-	const user = await User.findOne({email}).select('password'); // explicitly mentioning to select password also
+	const user = await User.findOne({email}).select('password companyId'); // explicitly mentioning to select password also
 	if(!user || !(await user.isPasswordCorrect(password, user.password))){
 		return next(new AppError('Email or password invalid', 401));
 	}
@@ -45,6 +46,9 @@ async function login(req, res, next){
 	if(user.active === false){
 		return next(new AppError('User is deactivated. Contact Administrator', 403));
 	}
+
+	const company = await Company.findById(user.companyId);
+	user.companyName = company.name;
 
 	sendTokenResponse(user, 200, res);
 }

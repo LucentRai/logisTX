@@ -11,9 +11,10 @@ function Maps(){
 	const add2 = [27.6559, 85.3150];
 	const waypoints = [add1, add2];
 
+
 	return (
 		<WaypointsContext.Provider value={waypoints}>
-			<MapContainer center={import.meta.env.MAP_CENTER} zoom={13} scrollWheelZoom={false}>
+			<MapContainer zoom={13} scrollWheelZoom={false}>
 				<TileLayer
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>

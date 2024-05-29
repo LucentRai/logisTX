@@ -56,8 +56,8 @@ app.use('/api/v1/transports', transportRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/warehouses', warehouseRouter);
 
-app.use('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
+app.use('*', (req, res, next) => {
+	next(new AppError(`Cannot find ${req.originalUrl} on the server`, 404));
 });
 
 

@@ -2,21 +2,21 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const PendingStatus = styled.span`
-	border: 1px solid #000;
+	border: 1px solid var(--bs-primary);
 	border-radius: 500px;
 	background-color: #9fc5ff;
 	padding: 2px 10px;
 `;
 
 const OnRouteStatus = styled.span`
-	border: 1px solid #000;
+	border: 1px solid var(--bs-warning);
 	border-radius: 500px;
-	background-color: #ffd44c;
+	background-color: #ffe282;
 	padding: 2px 10px;
 `;
 
 const DeliveredStatus = styled.span`
-	border: 1px solid #000;
+	border: 1px solid var(--bs-success);
 	border-radius: 500px;
 	background-color: #0fff92;
 	padding: 2px 10px;

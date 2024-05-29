@@ -1,5 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import axios from 'axios';
+
 import SignUpModal from "../features/homepage/SignUpModal";
 
 
@@ -128,33 +130,23 @@ function LoginForm(){
 			setEmailInfoClassName('visible text-danger');
 			setTimeout(() => {
 				setEmailInfoClassName('invisible');
-			}, 2000);
+			}, 1000);
 
 			return;
 		}
-
-		fetch('/api/v1/users/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ email, password })
+		axios.post(`${import.meta.env.VITE_API_USERS}/login`, {
+			email: email,
+			password: password
 		})
-		.then(res => {
-			if(res.ok){
-				toast.success('Login Successful');
+			.then(() => {
+				toast.success('Redirecting to dashboard...');
 				setTimeout(() => {
 					window.location.href = '/app';
 				}, 2000);
-			}
-			else{
-				console.log(res);
-				toast.error('Invalid Email or Password');
-			}
-		})
-		.catch(err => {
-			toast.error('Error: ' + err.message);
-		});
+			})
+			.catch(() => {
+				toast.error('Something went wrong');
+			});
 	}
 
 
