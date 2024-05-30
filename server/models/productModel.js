@@ -8,9 +8,19 @@ const productSchema = mongoose.Schema({
 		maxLength: [30, 'Product Name must have less or equal than 30 characters'],
 		minLength: [2, 'Product Name must have more or equal than 2 characters']
 	},
+	companyId: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Company',
+		required: [true, 'Please provide Company ID']
+	},
 	description: {
 		type: String,
 		trim: true
+	},
+	price: {
+		type: Number,
+		min: [0.01, 'Price ({VALUE}) is below the minimum allowed ({MIN}).'],
+		required: [true, 'Please provide product price'],
 	},
 	stockQuantity: {
 		type: Number,
@@ -27,7 +37,7 @@ const productSchema = mongoose.Schema({
 	weight: {
 		type: Number,
 		required: [true, 'Please provide product weight in kg'],
-		min: [0.01, 'Weight ({VALUE}) is below the minimum allowed ({MIN}) kg.']
+		min: [0.001, 'Weight ({VALUE}) is below the minimum allowed ({MIN}) kg.']
 	},
 	dimensions: {
 		type: [Number],
