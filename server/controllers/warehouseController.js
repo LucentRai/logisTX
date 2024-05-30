@@ -1,4 +1,4 @@
-const Warehouse = require('../models/WarehouseModel');
+const Warehouse = require('../models/warehouseModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
 const factory = require('../controllers/handlerFactory');
