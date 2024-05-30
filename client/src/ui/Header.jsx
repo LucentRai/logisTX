@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 
 function Header(){
+	const firstname = useSelector(state => state.user.firstname);
 
 	return (
 		<header className="py-3 border-bottom">
@@ -19,7 +21,7 @@ function Header(){
 							<img src="/img/default-profile-img.png" alt="Profile name" width="32" height="32" className="rounded-circle" />
 						</a>
 						<ul className="dropdown-menu text-small shadow">
-							{/* <li><a className="dropdown-item" href="#">{name}</a></li> */}
+							<li><a className="dropdown-item" href="#">{`${firstname}'s Profile`}</a></li>
 							<li><a className="dropdown-item" href="#">Settings</a></li>
 							<li><hr className="dropdown-divider" /></li>
 							<li><a className="dropdown-item" href="#">Sign out</a></li>

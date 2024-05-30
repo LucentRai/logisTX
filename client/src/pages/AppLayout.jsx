@@ -10,7 +10,7 @@ import { setUserInfo } from '../features/users/userSlice';
 function AppLayout() {
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem('user'));
-	dispatch(setUserInfo({payload: user}));
+	dispatch(setUserInfo(user));
 
 	return (
 		<>
