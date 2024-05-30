@@ -18,7 +18,7 @@ function LoginForm(){
 			setEmailInfoClassName('visible text-danger');
 			return;
 		}
-		axios.post(`${import.meta.env.VITE_API_USERS}/login`, {
+		axios.post('/users/login', {
 			email: email,
 			password: password
 		})

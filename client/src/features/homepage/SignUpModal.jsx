@@ -3,6 +3,7 @@ import { useReducer} from "react";
 import toast from "react-hot-toast";
 
 import { MAX_NAME_LENGTH, MIN_NAME_LENGTH, MAX_ADDRESS_LENGTH, MIN_ADDRESS_LENGTH, PHONE_REGEX } from "../../../../constants.json";
+import axios from "axios";
 
 const phoneRegexPattern = new RegExp(PHONE_REGEX);
 
@@ -102,25 +103,19 @@ function SignUpModal(){
 			return;
 		}
 
-		fetch(`${import.meta.env.VITE_API_USERS}/signup`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				firstname: state.firstname,
-				middlename: state.middlename,
-				lastname: state.lastname,
-				address: state.address,
-				role: state.role,
-				email: state.email,
-				phone: state.phone,
-				password: state.password,
-				company: state.company
-			})
+		axios.post('/users/signup', {
+			firstname: state.firstname,
+			middlename: state.middlename,
+			lastname: state.lastname,
+			address: state.address,
+			role: state.role,
+			email: state.email,
+			phone: state.phone,
+			password: state.password,
+			company: state.company
 		})
 		.then(res => {
-			if(res.ok){
+			if(res.status === 201){
 				toast.success('Sign Up Successful. Redirecting to Dashboard');
 				setTimeout(() => {
 					window.location.href = '/app';
@@ -131,6 +126,7 @@ function SignUpModal(){
 			}
 		})
 		.catch(err => {
+			console.error(err);
 			toast.error('Error: ' + err.message);
 		});
 	}
