@@ -56,16 +56,14 @@ exports.getAll = (Model, populateOption) =>
 		}
 
 		// const document = await features.query.explain(); // for stats about query
-		const document = await features.query;
+		const documents = await features.query;
 	
 		res
 			.status(200)
 			.json({
 				status: "success",
-				result: document.length,
-				data: {
-					document
-				}
+				result: documents.length,
+				documents
 			});
 	});
 
