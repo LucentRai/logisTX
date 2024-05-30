@@ -3,11 +3,9 @@ import userReducer from "./features/users/userSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
-  user: userReducer,
+	user: userReducer,
 });
 
-const store = configureStore({
+export default configureStore({
 	reducer: rootReducer
 });
-
-export default store;

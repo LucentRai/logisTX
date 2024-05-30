@@ -38,7 +38,7 @@ async function login(req, res, next){
 		return next(new AppError('Email and Password required.', 400));
 	}
 
-	const user = await User.findOne({email}).select('password companyId'); // explicitly mentioning to select password also
+	const user = await User.findOne({email}).select('+password'); // explicitly mentioning to select password also
 	if(!user || !(await user.isPasswordCorrect(password, user.password))){
 		return next(new AppError('Email or password invalid', 401));
 	}
@@ -48,7 +48,8 @@ async function login(req, res, next){
 	}
 
 	const company = await Company.findById(user.companyId);
-	user.companyName = company.name;
+	user._doc.companyName = company.name;
+	user._doc.address = company.address;
 
 	sendTokenResponse(user, 200, res);
 }
@@ -165,13 +166,12 @@ function sendTokenResponse(user, statusCode, res){
 	user.password = undefined; // remove password fields if selected
 
 	res.cookie('jwt', token, cookieOptions);
-
 	res
 		.status(statusCode)
 		.json({
 			status: 'success',
 			token,
-			data: {user}
+			user
 		});
 }
 
