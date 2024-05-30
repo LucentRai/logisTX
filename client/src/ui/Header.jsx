@@ -1,8 +1,5 @@
-import { useSelector } from "react-redux";
 
 function Header(){
-	const name = useSelector(state => state.user);
-	console.log(name);
 
 	return (
 		<header className="py-3 border-bottom">
