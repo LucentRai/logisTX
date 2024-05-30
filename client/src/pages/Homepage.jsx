@@ -1,5 +1,4 @@
-import SignUpModal from "../features/homepage/SignUpModal";
-import LoginForm from "../features/homepage/LoginForm";
+import LoginSignUp from "../features/homepage/LoginSignUp";
 
 
 function Homepage(){
@@ -34,8 +33,7 @@ function Homepage(){
 						<h1 className="display-4 fw-bold lh-1 text-body-emphasis mb-3">The Future of Logistics Today</h1>
 						<p className="col-lg-10 fs-4">Improving Logistics and Supply Chain Productivity & Performance</p>
 					</div>
-					<LoginForm />
-					<SignUpModal />
+					<LoginSignUp />
 				</div>
 				{/* END OF HERO SECTION */}
 
