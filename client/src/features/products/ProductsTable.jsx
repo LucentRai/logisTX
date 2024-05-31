@@ -6,7 +6,16 @@ import Table from "../../ui/Table";
 function ProductsTable({data}){
 
 	function render(row){
-
+		return (
+			<>
+				<td>{row.name}</td>
+				<td>{row.price}</td>
+				<td>{row.category}</td>
+				<td>{row.stockQuantity}</td>
+				<td><img src={`/img/products/${row.imgUrl[0]}`} alt={row.name} /></td>
+				<td>{row.weight}</td>
+			</>
+		);
 	}
 
 	return (

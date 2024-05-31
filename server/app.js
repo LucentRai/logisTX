@@ -13,7 +13,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const app = express();
 
 // Serving static files
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 /****************************** ROUTERS ******************************/

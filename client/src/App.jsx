@@ -1,8 +1,11 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import SpinnerFullPage from './ui/SpinnerFullPage';
+import axios from 'axios';
 
 const AppLayout = lazy(() => import('./pages/AppLayout'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -14,11 +17,21 @@ const Warehouses = lazy(() => import('./pages/Warehouses'));
 const Maps = lazy(() => import('./pages/Maps'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		}
+	}
+});
+
+axios.defaults.baseURL = import.meta.env.VITE_API;
 
 function App() {
 
 	return (
-		<>
+		<QueryClientProvider client={queryClient}>
+			<ReactQueryDevtools initialIsOpen={false} />
 			<BrowserRouter>
 				<Suspense fallback={<SpinnerFullPage />}>
 					<Routes>
@@ -36,7 +49,7 @@ function App() {
 				</Suspense>
 			</BrowserRouter>
 			<Toaster />
-		</>
+		</QueryClientProvider>
 	);
 }
 
