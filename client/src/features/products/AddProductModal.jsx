@@ -1,20 +1,41 @@
 import PropTypes from 'prop-types';
-import {Button, Col, Form, FormGroup, FormFeedback, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap';
+import {useSelector} from 'react-redux';
+import {Button, Col, Form, FormGroup, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row, Spinner} from 'reactstrap';
+import { useCreateProduct } from './useCreateProduct';
+import { useEffect, useRef } from 'react';
 
 function AddProductModal({isOpen, toggle, ...args}){
+	const companyId = useSelector(state => state.user.companyId);
+	const {isCreating, isSuccess, createProduct} = useCreateProduct();
+	const formRef = useRef(null);
 
 	function handleSubmit(e){
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		const formDataObject = Object.fromEntries(formData.entries());
-		console.log(formDataObject);
+		createProduct({
+			name: formDataObject.name,
+			companyId,
+			description: formDataObject.description,
+			price: formDataObject.price,
+			stockQuantity: formDataObject.stockQuantity,
+			weight: formDataObject.weight,
+			dimensions: [formDataObject.length, formDataObject.breadth, formDataObject.height]
+		});
 	}
+
+	useEffect(() => {
+		if(isSuccess && formRef.current){
+			formRef.current.reset();
+		}
+	}, [isSuccess]);
+
 
 	return (
 		<Modal isOpen={isOpen} toggle={toggle} {...args} size="xl">
 			<ModalHeader toggle={toggle}>Add Product</ModalHeader>
 			<ModalBody>
-				<Form onSubmit={e => handleSubmit(e)}>
+				<Form onSubmit={e => handleSubmit(e)} ref={formRef}>
 					<Row>
 						<Col md={6}>
 							<FormGroup>
@@ -46,7 +67,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 						<Col md={2}>
 							<FormGroup>
 								<Label for="stock">
-									Item in Stock
+									In Stock
 								</Label>
 								<Input
 									id="stock"
@@ -69,7 +90,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 							type="textarea"
 						/>
 					</FormGroup>
-					<FormGroup>
+					{/* <FormGroup>
 						<Label for="productImage">
 							Upload Images
 						</Label>
@@ -78,7 +99,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 							name="imgs"
 							type="file"
 						/>
-					</FormGroup>
+					</FormGroup> */}
 					<Row>
 						<Col md={6}>
 							<FormGroup>
@@ -96,25 +117,48 @@ function AddProductModal({isOpen, toggle, ...args}){
 								</FormText>
 							</FormGroup>
 						</Col>
-						<Col md={6}>
+						<Col md={2}>
 							<FormGroup>
-								<Label for="dimensions">
-									Dimensions
+								<Label for="length">
+									Length
 								</Label>
 								<Input
-									id="dimensions"
-									name="dimensions"
+									id="length"
+									name="length"
 									required
 								/>
-								<FormText>
-									Format: length, breadth, height (in meters)<br/>
-									Eg: 1.2, 0.5, 0.8
-								</FormText>
+							</FormGroup>
+						</Col>
+						<Col md={2}>
+							<FormGroup>
+								<Label for="breadth">
+									Breadth
+								</Label>
+								<Input
+									id="breadth"
+									name="breadth"
+									required
+								/>
+							</FormGroup>
+						</Col>
+						<Col md={2}>
+							<FormGroup>
+								<Label for="height">
+									Height
+								</Label>
+								<Input
+									id="height"
+									name="height"
+									required
+								/>
 							</FormGroup>
 						</Col>
 					</Row>
 					<ModalFooter>
-						<Button type="submit" color="primary">Add Product</Button>{' '}
+						{isCreating && <Spinner color="me-2" size="sm">Loading...</Spinner>}
+						<Button type="submit" color="primary" disabled={isCreating}>
+							Add Product
+						</Button>{' '}
 						<Button color="secondary" onClick={toggle}>Cancel</Button>
 					</ModalFooter>
 				</Form>

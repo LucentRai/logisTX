@@ -9,7 +9,7 @@ exports.createOne = Model =>
 			.status(201)
 			.json({
 				status: "success",
-				data: document
+				document
 			});
 	});
 

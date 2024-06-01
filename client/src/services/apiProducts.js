@@ -10,8 +10,7 @@ export async function createEditProduct(newProduct, id){
 		promise = axios.post('/products', newProduct);
 	}
 
-	promise.then(response => {
-		console.log(response);
+	return promise.then(response => {
 		return response.data;
 	})
 	.catch(error => {
