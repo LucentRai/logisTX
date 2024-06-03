@@ -49,6 +49,7 @@ function LoginForm(){
 							type="email"
 							className="form-control"
 							id="floatingEmail"
+							placeholder="Email Address"
 							name="email"
 							onChange={e => setEmail(e.target.value)}
 						/>

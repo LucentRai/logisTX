@@ -27,6 +27,15 @@ function reducer(state, action){
 
 	if(action.type !== 'validate') return state;
 
+	if(action.type === 'setState'){
+		console.log(state, action.values);
+		return {
+			...state,
+			...action.values,
+			showFeedback: true
+		};
+	}
+
 	if(action.values.firstname.length < MIN_NAME_LENGTH || action.values.firstname.length > MAX_NAME_LENGTH){
 		state.errors.firstname = `Firstname must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
 	}
@@ -127,6 +136,21 @@ function SignUpModal(){
 		})
 		.catch(err => {
 			console.error(err);
+			if(err.response.status === 400){
+				const message = err.response.data.message;
+				if(message.includes('Email')){
+					console.log('e');
+					dispatch({type: 'set-state', values: {email: message}});
+				}
+				else if(message.includes('Phone')){
+					console.log('p');
+					dispatch({type: 'set-state', values: {phone: message}});
+				}
+				else if(message.includes('Company')){
+					console.log('c');
+					dispatch({type: 'setState', values: {company: message}});
+				}
+			}
 			toast.error('Error: ' + err.message);
 		});
 	}
