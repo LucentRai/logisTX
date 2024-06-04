@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useReducer} from "react";
 import toast from "react-hot-toast";
 
-import { MAX_NAME_LENGTH, MIN_NAME_LENGTH, MAX_ADDRESS_LENGTH, MIN_ADDRESS_LENGTH, PHONE_REGEX } from "../../../../constants.json";
+import { MAX_COMPANY_NAME_LENGTH, MAX_NAME_LENGTH, MIN_NAME_LENGTH, MAX_ADDRESS_LENGTH, MIN_ADDRESS_LENGTH, PHONE_REGEX } from "../../../../constants.json";
 import axios from "axios";
 
 const phoneRegexPattern = new RegExp(PHONE_REGEX);
@@ -25,16 +25,19 @@ const initialState = {
 function reducer(state, action){
 	const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-	if(action.type !== 'validate') return state;
-
 	if(action.type === 'setState'){
-		console.log(state, action.values);
-		return {
+		const obj = {
 			...state,
-			...action.values,
+			errors: {
+				...action.values
+			},
 			showFeedback: true
 		};
+		console.log(obj);
+		return obj;
 	}
+
+	if(action.type !== 'validate') return state;
 
 	if(action.values.firstname.length < MIN_NAME_LENGTH || action.values.firstname.length > MAX_NAME_LENGTH){
 		state.errors.firstname = `Firstname must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
@@ -50,7 +53,7 @@ function reducer(state, action){
 		delete state.errors.lastname;
 	}
 
-	if(action.values.company.length < MIN_NAME_LENGTH || action.values.company.length > MAX_NAME_LENGTH){
+	if(action.values.company.length < MIN_NAME_LENGTH || action.values.company.length > MAX_COMPANY_NAME_LENGTH){
 		state.errors.company = `Company Name must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} characters.`;
 	}
 	else{
@@ -126,9 +129,9 @@ function SignUpModal(){
 		.then(res => {
 			if(res.status === 201){
 				toast.success('Sign Up Successful. Redirecting to Dashboard');
-				setTimeout(() => {
-					window.location.href = '/app';
-				}, 1000);
+				// setTimeout(() => {
+				// 	window.location.href = '/app';
+				// }, 1000);
 			}
 			else{
 				toast.error('Something went wrong.');
@@ -140,18 +143,17 @@ function SignUpModal(){
 				const message = err.response.data.message;
 				if(message.includes('Email')){
 					console.log('e');
-					dispatch({type: 'set-state', values: {email: message}});
+					dispatch({type: 'setState', values: {email: message}});
 				}
 				else if(message.includes('Phone')){
 					console.log('p');
-					dispatch({type: 'set-state', values: {phone: message}});
+					dispatch({type: 'setState', values: {phone: message}});
 				}
 				else if(message.includes('Company')){
 					console.log('c');
 					dispatch({type: 'setState', values: {company: message}});
 				}
 			}
-			toast.error('Error: ' + err.message);
 		});
 	}
 
