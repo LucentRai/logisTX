@@ -33,7 +33,6 @@ function reducer(state, action){
 			},
 			showFeedback: true
 		};
-		console.log(obj);
 		return obj;
 	}
 
@@ -127,11 +126,14 @@ function SignUpModal(){
 			company: state.company
 		})
 		.then(res => {
+			console.log(res);
 			if(res.status === 201){
+				localStorage.setItem('token', res.data.token);
+				localStorage.setItem('user', JSON.stringify(res.data.user));
 				toast.success('Sign Up Successful. Redirecting to Dashboard');
-				// setTimeout(() => {
-				// 	window.location.href = '/app';
-				// }, 1000);
+				setTimeout(() => {
+					window.location.href = '/app';
+				}, 1000);
 			}
 			else{
 				toast.error('Something went wrong.');
@@ -142,15 +144,12 @@ function SignUpModal(){
 			if(err.response.status === 400){
 				const message = err.response.data.message;
 				if(message.includes('Email')){
-					console.log('e');
 					dispatch({type: 'setState', values: {email: message}});
 				}
 				else if(message.includes('Phone')){
-					console.log('p');
 					dispatch({type: 'setState', values: {phone: message}});
 				}
 				else if(message.includes('Company')){
-					console.log('c');
 					dispatch({type: 'setState', values: {company: message}});
 				}
 			}

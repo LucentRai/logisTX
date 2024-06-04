@@ -18,6 +18,7 @@ function LoginForm(){
 			setEmailInfoClassName('visible text-danger');
 			return;
 		}
+
 		axios.post('/users/login', {
 			email: email,
 			password: password

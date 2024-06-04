@@ -16,36 +16,36 @@ async function signup(req, res, next){
 		return next(new AppError('Company already exists', 400));
 	}
 
-	// const newCompany = await Company.create({
-	// 	name: req.body.company,
-	// 	address: req.body.address
-	// });
+	const newCompany = await Company.create({
+		name: req.body.company,
+		address: req.body.address
+	});
 
 	// Check if email already exists
 	const email = await User.findOne({email: req.body.email});
 	if(email){
+		await Company.findByIdAndDelete(newCompany._id);
 		return next(new AppError('Email already exists', 400));
 	}
 
 	// Check if phone number already exists
 	const phone = await User.findOne({phone: req.body.phone});
 	if(phone){
+		await Company.findByIdAndDelete(newCompany._id);
 		return next(new AppError('Phone number already exists', 400));
 	}
 
-	// const newUser = await User.create({
-	// 	firstname: req.body.firstname,
-	// 	middlename: req.body.middlename,
-	// 	lastname: req.body.lastname,
-	// 	role: req.body.role,
-	// 	companyId: newCompany._id,
-	// 	email: req.body.email,
-	// 	phone: req.body.phone,
-	// 	password: req.body.password,
-	// });
-	const newUser = req.body;
-	console.log(newUser);
-	
+	const newUser = await User.create({
+		firstname: req.body.firstname,
+		middlename: req.body.middlename,
+		lastname: req.body.lastname,
+		role: req.body.role,
+		companyId: newCompany._id,
+		email: req.body.email,
+		phone: req.body.phone,
+		password: req.body.password,
+	});
+
 	sendTokenResponse(newUser, 201, res);
 }
 
