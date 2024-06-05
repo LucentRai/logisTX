@@ -5,5 +5,5 @@ App which can find the most efficient routes in real-time, taking into account c
 ## Overview
 ![Block Diagram](https://github.com/LucentRai/logisTX/assets/20392986/012e8dbe-c104-4959-9634-b564846dfbc8)
 
-## Schema Diagram
-![Screenshot 2024-05-19 063143](https://github.com/LucentRai/logisTX/assets/20392986/dc00b2f8-5c83-46ed-9b83-e0bfacaf8ea0)
+## Schema
+![ER](https://github.com/LucentRai/logisTX/assets/20392986/4a85f642-614f-4da1-8742-c8b75712ea22)
