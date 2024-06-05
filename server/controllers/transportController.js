@@ -1,6 +1,4 @@
 const Transport = require('../models/transportModel');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/AppError');
 const factory = require('../controllers/handlerFactory');
 
 
