@@ -9,7 +9,7 @@ const orderSchema = mongoose.Schema({
 		type: mongoose.Schema.ObjectId,
 		ref: 'Company',
 	},
-	location: {
+	destination: {
 		type: [Number],
 		required: true,
 		validate: {
