@@ -30,6 +30,7 @@ function Homepage(){
 				{/* HERO SECTION */}
 				<div className="row align-items-center g-lg-5">
 					<div className="col-lg-7 text-center text-lg-start">
+					<img src="/img/banner.png" alt="logisTX Banner" className="img-fluid" />
 						<h1 className="display-4 fw-bold lh-1 text-body-emphasis mb-3">The Future of Logistics Today</h1>
 						<p className="col-lg-10 fs-4">Improving Logistics and Supply Chain Productivity & Performance</p>
 					</div>
@@ -59,7 +60,7 @@ function Homepage(){
 							<div className="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
 								<img src="/img/Parcel.svg" alt="Routing Icon" width="100" height="100" />
 							</div>
-							<h3 className="fs-2 text-body-emphasis"> Ecommerce Fulfillment Soluctions</h3>
+							<h3 className="fs-2 text-body-emphasis"> Ecommerce Fulfillment Solutions</h3>
 							<p>Improve and scale ecommerce warehouse, pick, pack, ship, and other logistics operations</p>
 						</div>
 					</div>
