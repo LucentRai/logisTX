@@ -13,13 +13,14 @@ function ProductsTable({data}){
 				<td>{row.stockQuantity}</td>
 				{/* <td><img src={`/img/products/${row.imgUrl[0]}`} alt={row.name} style={{borderRadius: 'var(--bs-border-radius)', width: '80px', height: 'auto'}} /></td> */}
 				<td>{row.weight}</td>
+				<td>{row.dimensions.reduce((acc, cur) => acc * cur)}</td>
 			</>
 		);
 	}
 
 	return (
 		<Table>
-			<Table.Head columns={["Name", "Price", "Stock", "Weight"]} />
+			<Table.Head columns={["Name", "Price", "Stock", "Weight", "Volume"]} />
 			<Table.Body
 				data={data}
 				render={render}/>
