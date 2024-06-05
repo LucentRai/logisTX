@@ -4,7 +4,7 @@ import Table from "../../ui/Table";
 
 
 function ProductsTable({data}){
-
+	console.log(data);
 	function render(row){
 		return (
 			<>
@@ -13,7 +13,7 @@ function ProductsTable({data}){
 				<td>{row.stockQuantity}</td>
 				{/* <td><img src={`/img/products/${row.imgUrl[0]}`} alt={row.name} style={{borderRadius: 'var(--bs-border-radius)', width: '80px', height: 'auto'}} /></td> */}
 				<td>{row.weight}</td>
-				<td>{row.dimensions.reduce((acc, cur) => acc * cur)}</td>
+				<td>{row.dimensions.reduce((acc, cur) => acc * cur, 1)}</td>
 			</>
 		);
 	}

@@ -3,15 +3,20 @@ import { useQuery } from "@tanstack/react-query";
 import ProductsTable from "../features/products/ProductsTable";
 import AddProduct from "../features/products/AddProduct";
 import { getProducts } from "../services/apiProducts";
-
+import SpinnerFullPage from "../ui/SpinnerFullPage";
 
 function Products(){
 	const {
 		data: {documents: products} = {},
+		isLoading
 	} = useQuery({
 		queryKey: ['products'],
 		queryFn: getProducts
 	});
+
+	if(isLoading){
+		return <SpinnerFullPage />;
+	}
 
 
 	return (

@@ -2,15 +2,22 @@ import { useQuery } from "@tanstack/react-query";
 
 import OrdersTable from "../features/orders/OrdersTable";
 import { getAllOrders } from "../services/apiOrders.";
+import SpinnerFullPage from "../ui/SpinnerFullPage";
 
 function Orders(){
-	const {data} = useQuery({
+	const {
+		data: {documents} = {},
+		isLoading
+	} = useQuery({
 		queryKey: ['orders'],
 		queryFn: getAllOrders
 	});
 
+	if(isLoading){
+		return <SpinnerFullPage />;
+	}
 
-	const orders = data.documents.map(order => {
+	const orders = documents.map(order => {
 		return {
 			products: order.orderItems.map(item => item.name).join(', '),
 			customer: 'Customer Name',

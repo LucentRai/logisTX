@@ -20,11 +20,12 @@ export async function createEditProduct(newProduct, id){
 }
 
 export async function getProducts(){
-	return axios.get('/products')
-		.then(response => {
-			return response.data;
-		})
-		.catch(() => {
-			throw new Error('Error getting products');
-		});
+	try{
+		const response = await axios.get('/products');
+		return response.data;
+	}
+	catch(error){
+		console.error(error);
+	throw new Error('Error getting products');
+	}
 }

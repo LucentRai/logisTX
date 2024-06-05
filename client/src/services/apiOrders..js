@@ -1,11 +1,12 @@
 import axios from "axios";
 
 export async function getAllOrders(){
-	return axios.get('/orders')
-		.then(response => {
-			return response.data;
-		})
-		.catch(() => {
-			throw new Error('Error getting orders');
-		});
+	try{
+		const response = await axios.get('/orders');
+		return response.data;
+	}
+	catch(error){
+		console.error(error);
+		throw new Error('Error getting orders');
+	}
 }
