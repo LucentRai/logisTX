@@ -9,30 +9,12 @@ const AppError = require('./utils/AppError');
 const globalErrorHandler = require('./controllers/errorController');
 
 
-
 const app = express();
-
-// Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-/****************************** ROUTERS ******************************/
-const orderRouter = require('./routes/orderRoute');
-const productRouter = require('./routes/productRoute');
-const transportRouter = require('./routes/transportRoute');
-const userRouter = require('./routes/userRoute');
-const warehouseRouter = require('./routes/warehouseRoute');
-
-
-// Logging in development
-if(process.env.NODE_ENV === 'development'){
-	const morgan = require('morgan');
-	app.use(morgan('dev'));
-}
 
 
 /****************************** MIDDLEWARES ******************************/
-app.use(compresssion());
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Restrict requests to avoid DOS attacks
 app.use('/api', rateLimit({
@@ -47,6 +29,20 @@ app.use(cookieParser()); // parse data from cookie
 
 // Data sanitization to prevent NoSQL injections
 app.use(mongoSanitize()); // replaces mongo operators from user input
+
+// Logging in development
+if(process.env.NODE_ENV === 'development'){
+	const morgan = require('morgan');
+	app.use(morgan('dev'));
+}app.use(compresssion());
+
+
+/****************************** ROUTERS ******************************/
+const orderRouter = require('./routes/orderRoute');
+const productRouter = require('./routes/productRoute');
+const transportRouter = require('./routes/transportRoute');
+const userRouter = require('./routes/userRoute');
+const warehouseRouter = require('./routes/warehouseRoute');
 
 
 /****************************** ROUTES ******************************/

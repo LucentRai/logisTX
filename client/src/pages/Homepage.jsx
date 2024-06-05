@@ -8,7 +8,7 @@ function Homepage(){
 			<header className="sticky-top">
 				<nav className="navbar navbar-expand-lg bg-body-tertiary">
 					<div className="container-fluid">
-						<a className="navbar-brand" href="/"><img width="60" height="60" src="img/logo.png" alt="logisTX logo" /></a>
+						<a className="navbar-brand" href="/"><img width="60" height="60" src="/img/logo.png" alt="logisTX logo" /></a>
 						<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span className="navbar-toggler-icon"></span>
 						</button>
@@ -43,21 +43,21 @@ function Homepage(){
 					<div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
 						<div className="feature col">
 							<div className="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-								<img src="img/Routing.svg" alt="Routing Icon" width="100" height="100" />
+								<img src="/img/Routing.svg" alt="Routing Icon" width="100" height="100" />
 							</div>
 							<h3 className="fs-2 text-body-emphasis">AI Based Routing & Mobile</h3>
 							<p>Improve fleet productivity with integrated planning, dispatch, mobile, and telematics .</p>
 						</div>
 						<div className="feature col">
 							<div className="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-								<img src="img/Transport.svg" alt="Routing Icon" width="100" height="100" />
+								<img src="/img/Transport.svg" alt="Routing Icon" width="100" height="100" />
 							</div>
 							<h3 className="fs-2 text-body-emphasis">Transport Management</h3>
 							<p>View, optimize, and manage transportation operations across modes.</p>
 						</div>
 						<div className="feature col">
 							<div className="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-								<img src="img/Parcel.svg" alt="Routing Icon" width="100" height="100" />
+								<img src="/img/Parcel.svg" alt="Routing Icon" width="100" height="100" />
 							</div>
 							<h3 className="fs-2 text-body-emphasis"> Ecommerce Fulfillment Soluctions</h3>
 							<p>Improve and scale ecommerce warehouse, pick, pack, ship, and other logistics operations</p>
@@ -72,7 +72,7 @@ function Homepage(){
 					<div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 						<div className="col">
 							<div className="card shadow-sm">
-								<img className="bd-placeholder-img card-img-top" width="100%" src="img/Team_Kashmin.jpg" alt="Kashmin Shrestha" />
+								<img className="bd-placeholder-img card-img-top" width="100%" src="/img/Team_Kashmin.jpg" alt="Kashmin Shrestha" />
 								<div className="card-body">
 									<p className="card-text text-center">190314 Kashmin Shrestha</p>
 								</div>
@@ -80,7 +80,7 @@ function Homepage(){
 						</div>
 						<div className="col">
 							<div className="card shadow-sm">
-								<img className="bd-placeholder-img card-img-top" width="100%" src="img/Team_Lucent.jpg" alt="Lucent Rai" />
+								<img className="bd-placeholder-img card-img-top" width="100%" src="/img/Team_Lucent.jpg" alt="Lucent Rai" />
 								<div className="card-body">
 									<p className="card-text text-center">190317 Lucent Thulung Rai</p>
 								</div>
@@ -88,7 +88,7 @@ function Homepage(){
 						</div>
 						<div className="col">
 							<div className="card shadow-sm">
-								<img className="bd-placeholder-img card-img-top" width="100%" src="img/Team_Ujjwal.jpg" alt="Ujjwal Babu Tiwari" />
+								<img className="bd-placeholder-img card-img-top" width="100%" src="/img/Team_Ujjwal.jpg" alt="Ujjwal Babu Tiwari" />
 								<div className="card-body">
 									<p className="card-text text-center">190338 Ujjwal Babu Tiwari</p>
 								</div>
