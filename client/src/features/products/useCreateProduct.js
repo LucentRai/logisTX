@@ -7,7 +7,7 @@ import { createEditProduct } from "../../services/apiProducts";
 export function useCreateProduct(){
 	const queryClient = useQueryClient();
 
-	const {mutate: createProduct, isLoading: isCreating, isSuccess} = useMutation({
+	const {mutate: createProduct, isPending: isCreating, isSuccess} = useMutation({
 		mutationFn: createEditProduct,
 		onSuccess: () => {
 			toast.success('Product added successfully');

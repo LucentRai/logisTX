@@ -25,7 +25,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 	}
 
 	useEffect(() => {
-		if(isSuccess && formRef.current){
+		if(isSuccess && formRef.current && formRef.current.reset){
 			formRef.current.reset();
 		}
 	}, [isSuccess]);
@@ -35,7 +35,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 		<Modal isOpen={isOpen} toggle={toggle} {...args} size="xl">
 			<ModalHeader toggle={toggle}>Add Product</ModalHeader>
 			<ModalBody>
-				<Form onSubmit={e => handleSubmit(e)} ref={formRef}>
+				<Form onSubmit={e => handleSubmit(e)} innerRef={formRef}>
 					<Row>
 						<Col md={6}>
 							<FormGroup>
@@ -125,6 +125,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 								<Input
 									id="length"
 									name="length"
+									type="number"
 									required
 								/>
 							</FormGroup>
@@ -137,6 +138,7 @@ function AddProductModal({isOpen, toggle, ...args}){
 								<Input
 									id="breadth"
 									name="breadth"
+									type="number"
 									required
 								/>
 							</FormGroup>
@@ -149,21 +151,21 @@ function AddProductModal({isOpen, toggle, ...args}){
 								<Input
 									id="height"
 									name="height"
+									type="number"
 									required
 								/>
 							</FormGroup>
 						</Col>
 					</Row>
 					<ModalFooter>
-						{isCreating && <Spinner color="me-2" size="sm">Loading...</Spinner>}
 						<Button type="submit" color="primary" disabled={isCreating}>
+							{isCreating && <Spinner className="me-2" color="light" size="sm">Loading...</Spinner>}
 							Add Product
 						</Button>{' '}
 						<Button color="secondary" onClick={toggle}>Cancel</Button>
 					</ModalFooter>
 				</Form>
 			</ModalBody>
-			
 		</Modal>
 	);
 }
