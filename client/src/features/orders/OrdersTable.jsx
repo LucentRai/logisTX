@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import {getAllOrders} from "../../services/apiOrders";
+
 const PendingStatus = styled.span`
 	border: 1px solid var(--bs-primary);
 	border-radius: 500px;
@@ -23,9 +25,31 @@ const DeliveredStatus = styled.span`
 `;
 
 import Table from "../../ui/Table";
+import { useQuery } from "@tanstack/react-query";
+import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 
-function OrdersTable({data}){
+function OrdersTable(){
+	const {
+		data: {documents} = {},
+		isLoading
+	} = useQuery({
+		queryKey: ['orders'],
+		queryFn: getAllOrders
+	});
+
+	if(isLoading){
+		return <SpinnerFullPage />;
+	}
+
+	const orders = documents.map(order => {
+		return {
+			products: order.orderItems.map(item => item.name).join(', '),
+			customer: 'Customer Name',
+			orderedDate: new Date(order.createdAt).toLocaleDateString(),
+			status: order.status
+		};
+	});
 
 	function render(row){
 		const tableCells = [];
@@ -57,7 +81,7 @@ function OrdersTable({data}){
 		<Table>
 			<Table.Head columns={["Products", "Customer", "Ordered Date", "Status"]} />
 			<Table.Body
-				data={data}
+				data={orders}
 				render={render}/>
 		</Table>
 	);

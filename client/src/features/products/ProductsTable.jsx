@@ -1,10 +1,22 @@
-import PropTypes from "prop-types";
-
 import Table from "../../ui/Table";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../services/apiProducts";
+import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 
-function ProductsTable({data}){
-	console.log(data);
+function ProductsTable(){
+	const {
+		data: {documents: products} = {},
+		isLoading
+	} = useQuery({
+		queryKey: ['products'],
+		queryFn: getProducts
+	});
+
+	if(isLoading){
+		return <SpinnerFullPage />;
+	}
+
 	function render(row){
 		return (
 			<>
@@ -22,14 +34,10 @@ function ProductsTable({data}){
 		<Table>
 			<Table.Head columns={["Name", "Price", "Stock", "Weight", "Volume"]} />
 			<Table.Body
-				data={data}
+				data={products}
 				render={render}/>
 		</Table>
 	);
 }
-
-ProductsTable.propTypes = {
-	data: PropTypes.array.isRequired
-};
 
 export default ProductsTable;
