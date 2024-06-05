@@ -1,10 +1,14 @@
 import {BoxSeamFill, FilePersonFill, Truck} from "react-bootstrap-icons";
+import {useSelector} from "react-redux";
+
 import InfoCard from "../ui/InfoCard";
 
 function Dashboard(){
+	const {name} = useSelector(state => state.user.company);
+
 	return (
 		<>
-			<h1 className="h2">Dashboard</h1>
+			<h1 className="h2">{`${name} Dashboard`}</h1>
 			<section className="section dashboard">
 				<div className="row">
 
