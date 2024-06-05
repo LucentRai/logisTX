@@ -42,6 +42,11 @@ const productSchema = mongoose.Schema({
 	dimensions: {
 		type: [Number],
 		required: [true, 'Please provide product dimensions in meters (length, breadth, height)'],
+	},
+	warehouse: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Warehouse',
+		required: [true, 'Please provide warehouse ID']
 	}
 });
 

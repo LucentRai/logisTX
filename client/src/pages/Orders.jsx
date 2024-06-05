@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
+
 import OrdersTable from "../features/orders/OrdersTable";
 import { getAllOrders } from "../services/apiOrders.";
 
 function Orders(){
-	const {data: {documents: orders} = {}} = useQuery({
+	const {data} = useQuery({
 		queryKey: ['orders'],
 		queryFn: getAllOrders
 	});
 
-	const data = orders.map(order => {
+
+	const orders = data.documents.map(order => {
 		return {
 			products: order.orderItems.map(item => item.name).join(', '),
 			customer: 'Customer Name',
@@ -23,7 +25,7 @@ function Orders(){
 			<h1 className="h2">Orders</h1>
 			<section className="section">
 				<div className="row">
-					<OrdersTable data={data} />
+					<OrdersTable data={orders} />
 				</div>
 			</section>
 		</>

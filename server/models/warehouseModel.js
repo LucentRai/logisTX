@@ -15,33 +15,33 @@ const validateOperatingHours = (hours) => {
 };
 
 const operatingHoursSchema = new mongoose.Schema({
+	sunday: {
+		open: { type: String },
+		close: { type: String }
+	},
 	monday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	},
 	tuesday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	},
 	wednesday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	},
 	thursday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	},
 	friday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	},
 	saturday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
-	},
-	sunday: {
-		open: { type: String, required: true },
-		close: { type: String, required: true }
+		open: { type: String },
+		close: { type: String }
 	}
 }, {
 	_id: false,
