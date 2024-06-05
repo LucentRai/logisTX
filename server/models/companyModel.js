@@ -19,15 +19,7 @@ const companySchema = mongoose.Schema({
 		required: [true, 'Please provide company address'],
 		maxLength: [MAX_ADDRESS_LENGTH, `An address must have less or equal than ${MAX_ADDRESS_LENGTH} characters`],
 		minLength: [MIN_ADDRESS_LENGTH, `An address must have more or equal than ${MIN_ADDRESS_LENGTH} characters`]
-	},
-	warehouses: [{
-		type: mongoose.Schema.ObjectId,
-		ref: 'Warehouse'
-	}],
-	transports: [{
-		type: mongoose.Schema.ObjectId,
-		ref: 'Transport'
-	}]
+	}
 });
 
 /*********************** MIDDLEWARES ***********************/

@@ -38,6 +38,7 @@ if(process.env.NODE_ENV === 'development'){
 
 
 /****************************** ROUTERS ******************************/
+const customerRouter = require('./routes/customerRoute');
 const orderRouter = require('./routes/orderRoute');
 const productRouter = require('./routes/productRoute');
 const transportRouter = require('./routes/transportRoute');
@@ -46,6 +47,7 @@ const warehouseRouter = require('./routes/warehouseRoute');
 
 
 /****************************** ROUTES ******************************/
+app.use('/api/v1/customers', customerRouter);
 app.use('/api/v1/orders', orderRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/transports', transportRouter);
