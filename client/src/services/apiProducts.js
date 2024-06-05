@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getAll } from "./apiHelper";
 
 export async function createEditProduct(newProduct, id){
 	let promise;
@@ -19,13 +20,6 @@ export async function createEditProduct(newProduct, id){
 	});
 }
 
-export async function getProducts(){
-	try{
-		const response = await axios.get('/products');
-		return response.data;
-	}
-	catch(error){
-		console.error(error);
-	throw new Error('Error getting products');
-	}
+export function getProducts(){
+	return getAll('/products');
 }
