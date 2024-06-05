@@ -8,6 +8,7 @@ import SpinnerFullPage from './ui/SpinnerFullPage';
 import axios from 'axios';
 
 const AppLayout = lazy(() => import('./pages/AppLayout'));
+const Customers = lazy(() => import('./pages/Customer'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Homepage = lazy(() => import('./pages/Homepage'));
 const Orders = lazy(() => import('./pages/Orders'));
@@ -38,6 +39,7 @@ function App() {
 						<Route index element={<Homepage />} />
 						<Route element={<AppLayout />}>
 							<Route path="/app" element={<Dashboard />} />
+							<Route path="/customers" element={<Customers />} />
 							<Route path="/orders" element={<Orders />} />
 							<Route path="/products" element={<Products />} />
 							<Route path="/transports" element={<Transports />} />

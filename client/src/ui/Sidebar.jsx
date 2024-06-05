@@ -1,4 +1,4 @@
-import {HouseDoorFill, Cart, Map, Archive, Gear, BoxArrowLeft, Truck, Building} from 'react-bootstrap-icons';
+import {HouseDoorFill, Cart, Map, Archive, Gear, BoxArrowLeft, Truck, Building, People} from 'react-bootstrap-icons';
 import SidebarDevButtons from '../dev-tools/SidebarDevButtons';
 
 function Sidebar(){
@@ -15,6 +15,12 @@ function Sidebar(){
 							<a className="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/app">
 								<HouseDoorFill />
 								Dashboard
+							</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link d-flex align-items-center gap-2" href="/customers">
+								<People />
+								Customers
 							</a>
 						</li>
 						<li className="nav-item">

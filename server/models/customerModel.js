@@ -2,7 +2,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 
 const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
-const {MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX} = JSON.parse(jsonConstants);;
+const {MIN_ADDRESS_LENGTH, MAX_ADDRESS_LENGTH, MAX_NAME_LENGTH, MIN_NAME_LENGTH, PHONE_REGEX} = JSON.parse(jsonConstants);;
 const phoneRegexPattern = new RegExp(PHONE_REGEX);
 
 const customerSchema = mongoose.Schema({
@@ -17,6 +17,12 @@ const customerSchema = mongoose.Schema({
 		type: mongoose.Schema.ObjectId,
 		required: [true, 'Please provide company ID'],
 		ref: 'Company'
+	},
+	address: {
+		type: String,
+		trim: true,
+		minLength: [MIN_ADDRESS_LENGTH, `An address must have more or equal than ${MIN_ADDRESS_LENGTH} characters`],
+		maxLength: [MAX_ADDRESS_LENGTH, `An address must have less or equal than ${MAX_ADDRESS_LENGTH} characters`]
 	},
 	phone: {
 		type: String,
