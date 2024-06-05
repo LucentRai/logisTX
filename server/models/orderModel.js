@@ -2,16 +2,9 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 
 const jsonConstants = fs.readFileSync(`${__dirname}/../../constants.json`, 'utf-8');
-const {PAYMENT_METHODS} = JSON.parse(jsonConstants);
+const {ORDER_STATUS, PAYMENT_METHODS} = JSON.parse(jsonConstants);
 
 const orderSchema = mongoose.Schema({
-	name: {
-		type: String,
-		required: [true, 'Please provide transport name'],
-		trim: true,
-		maxLength: [30, 'Transport name must have less or equal than 30 characters'],
-		minLength: [2, 'Transport name must have more or equal than 2 characters']
-	},
 	companyId: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'Company',
@@ -38,7 +31,7 @@ const orderSchema = mongoose.Schema({
 	},
 	status: {
 		type: String,
-		enum: ['pending', 'processing', 'completed']
+		enum: ORDER_STATUS
 	},
 	orderItems: {
 		type: [mongoose.Schema.ObjectId],

@@ -7,7 +7,7 @@ const factory = require('../controllers/handlerFactory');
 
 module.exports = {
 	getOrder: factory.getOne(Order),
-	getAllOrders: factory.getAll(Order),
+	getAllOrders: factory.getAll(Order, {path: 'orderItems', select: 'name'}),
 	createOrder: factory.createOne(Order),
 	updateOrder: factory.updateOne(Order),
 	deleteOrder: factory.deleteOne(Order)

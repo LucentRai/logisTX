@@ -1,26 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
 import OrdersTable from "../features/orders/OrdersTable";
+import { getAllOrders } from "../services/apiOrders.";
 
 function Orders(){
-	const data = [
-		{
-			products: "Product 1, Product 2",
-			customer: "Customer 1",
-			orderedDate: "2021-09-01",
-			status: "pending"
-		},
-		{
-			products: "Product 1, Product 2",
-			customer: "Customer 2",
-			orderedDate: "2021-09-01",
-			status: "on-route"
-		},
-		{
-			products: "Product 1, Product 2",
-			customer: "Customer 3",
-			orderedDate: "2021-09-01",
-			status: "delivered"
-		},
-	];
+	const {data: {documents: orders} = {}} = useQuery({
+		queryKey: ['orders'],
+		queryFn: getAllOrders
+	});
+
+	const data = orders.map(order => {
+		return {
+			products: order.orderItems.map(item => item.name).join(', '),
+			customer: 'Customer Name',
+			orderedDate: new Date(order.createdAt).toLocaleDateString(),
+			status: order.status
+		};
+	});
+
 
 	return (
 		<>
