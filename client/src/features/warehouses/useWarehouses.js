@@ -4,7 +4,7 @@ import { getWarehousesApi } from '../../services/apiWarehouses';
 export function useWarehouses(){
 	const {
 		isLoading,
-		data: {documents: warehouses},
+		data: {documents: warehouses} = {},
 		error,
 	} = useQuery({
 		queryKey: ['warehouses'],

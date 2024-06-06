@@ -1,4 +1,5 @@
 import Sidebar from "../features/warehouses/Sidebar";
+import Locations from "../features/warehouses/Locations";
 
 function Warehouses(){
 
@@ -8,6 +9,7 @@ function Warehouses(){
 		<section className="section">
 			<div className="row">
 				<Sidebar />
+				<Locations />
 			</div>
 		</section>
 		</>
