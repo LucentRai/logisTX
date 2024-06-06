@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import SignUpModal from "./SignUpModal";
+import { Spinner } from "reactstrap";
 
 
 function LoginForm(){
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const [emailInfoClassName, setEmailInfoClassName] = useState('invisible');
 
 	function handleLogin(e){
@@ -19,6 +21,7 @@ function LoginForm(){
 			return;
 		}
 
+		setIsLoading(true);
 		axios.post('/users/login', {
 			email: email,
 			password: password
@@ -26,12 +29,14 @@ function LoginForm(){
 			.then((response) => {
 				localStorage.setItem('token', response.data.token);
 				localStorage.setItem('user', JSON.stringify(response.data.user));
+				setIsLoading(false);
 				toast.success('Redirecting to dashboard...');
 				setTimeout(() => {
 					window.location.href = '/app';
 				}, 1000);
 			})
 			.catch((response) => {
+				setIsLoading(false);
 				if(response.response.status === 401) toast.error('Invalid email or password');
 				else {
 					console.error(response);
@@ -53,6 +58,7 @@ function LoginForm(){
 							placeholder="Email Address"
 							name="email"
 							onChange={e => setEmail(e.target.value)}
+							disabled={isLoading}
 						/>
 						<label htmlFor="floatingEmail">Email address</label>
 						<div className={emailInfoClassName}>Please enter a valid email address.</div>
@@ -65,6 +71,7 @@ function LoginForm(){
 							placeholder="Password"
 							name="password"
 							onChange={e => setPassword(e.target.value)}
+							disabled={isLoading}
 						/>
 						<label htmlFor="floatingPassword">Password</label>
 					</div>
@@ -73,7 +80,10 @@ function LoginForm(){
 							<input type="checkbox" value="remember-me" /> Remember me
 						</label>
 					</div>
-					<button className="w-100 btn btn-lg btn-primary" type="submit" onClick={(e) => handleLogin(e)}>Log in</button>
+					<button className="w-100 btn btn-lg btn-primary" type="submit" onClick={(e) => handleLogin(e)} disabled={isLoading}>
+						{isLoading && <Spinner size="sm" color="light" className="me-2" />}
+						Log in
+					</button>
 					<hr className="my-4" />
 					<button type="button" className="w-100 btn btn-lg btn-outline-info" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
 				</form>
