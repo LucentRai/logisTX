@@ -17,7 +17,7 @@ const userSlice = createSlice({
 		photo: ''
 	},
 	reducers: {
-		setUserInfo: (state, action) => {
+		setUserInfo(state, action){
 			const {_id, firstname, lastname, role, companyId, companyName, address, phone, email, photo} = action.payload;
 			state._id = _id;
 			state.firstname = firstname;

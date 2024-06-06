@@ -1,5 +1,5 @@
 import { getAll } from "./apiHelper";
 
-export async function getAllWarehouses(){
+export async function getWarehousesApi(){
 	return getAll('/warehouses');
 }
