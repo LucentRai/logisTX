@@ -1,4 +1,4 @@
-import {HouseDoorFill, Cart, Map, Archive, Gear, BoxArrowLeft, Truck, Building, People} from 'react-bootstrap-icons';
+import {HouseDoorFill, Cart, Map, Archive, Truck, Building, People} from 'react-bootstrap-icons';
 import SidebarDevButtons from '../dev-tools/SidebarDevButtons';
 
 function Sidebar(){
@@ -74,23 +74,6 @@ function Sidebar(){
 					</ul>
 
 					{import.meta.env.DEV && <SidebarDevButtons />}
-
-					<hr className="my-3" />
-
-					<ul className="nav flex-column mb-auto">
-						<li className="nav-item">
-							<a className="nav-link d-flex align-items-center gap-2" href="/settings">
-								<Gear />
-								Settings
-							</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link d-flex align-items-center gap-2" href="/logout">
-								<BoxArrowLeft />
-								Sign out
-							</a>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</div>
