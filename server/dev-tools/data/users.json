@@ -1,0 +1,107 @@
+[
+	{
+		"_id": "60d21b5067d0d8992e610c88",
+		"firstname": "Sita",
+		"lastname": "Shrestha",
+		"role": "Admin",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"email": "sita.shrestha@example.com",
+		"phone": "+9779812345678",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b5467d0d8992e610c89",
+		"firstname": "Ram",
+		"middlename": "Bahadur",
+		"lastname": "Thapa",
+		"role": "Manager",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"email": "ram.thapa@example.com",
+		"phone": "+9779812345679",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b5867d0d8992e610c8a",
+		"firstname": "Hari",
+		"lastname": "Gurung",
+		"role": "Developer",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"email": "hari.gurung@example.com",
+		"phone": "+9779812345680",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b5c67d0d8992e610c8b",
+		"firstname": "Laxmi",
+		"lastname": "Adhikari",
+		"role": "Designer",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"email": "laxmi.adhikari@example.com",
+		"phone": "+9779812345681",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b6067d0d8992e610c8c",
+		"firstname": "Gita",
+		"lastname": "Rai",
+		"role": "Tester",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"email": "gita.rai@example.com",
+		"phone": "+9779812345682",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b6467d0d8992e610c8d",
+		"firstname": "Sunita",
+		"middlename": "Devi",
+		"lastname": "Karki",
+		"role": "Admin",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"email": "sunita.karki@example.com",
+		"phone": "+9779812345683",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b6867d0d8992e610c8e",
+		"firstname": "Bishnu",
+		"middlename": "Prasad",
+		"lastname": "Dahal",
+		"role": "Manager",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"email": "bishnu.dahal@example.com",
+		"phone": "+9779812345684",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b6c67d0d8992e610c8f",
+		"firstname": "Kiran",
+		"middlename": "Raj",
+		"lastname": "Lama",
+		"role": "Developer",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"email": "kiran.lama@example.com",
+		"phone": "+9779812345685",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b7067d0d8992e610c90",
+		"firstname": "Anita",
+		"lastname": "Maharjan",
+		"role": "Designer",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"email": "anita.maharjan@example.com",
+		"phone": "+9779812345686",
+		"password": "asdfasdf"
+	},
+	{
+		"_id": "60d21b7467d0d8992e610c91",
+		"firstname": "Mina",
+		"middlename": "Kumari",
+		"lastname": "Shah",
+		"role": "Tester",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"email": "mina.shah@example.com",
+		"phone": "+9779812345687",
+		"password": "asdfasdf"
+	}
+]
