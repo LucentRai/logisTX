@@ -42,7 +42,7 @@ Head.propTypes = {
 	columns: PropTypes.array.isRequired
 };
 
-function Body({data, render}){
+function Body({data, render, onRowClick}){
 	const {numberOfColumns} = useContext(TableContext);
 
 	if(!data.length){
@@ -52,7 +52,7 @@ function Body({data, render}){
 	return (
 		<tbody>
 			{data.map((row, i) => (
-				<tr key={i}>
+				<tr key={i} onClick={() => onRowClick(row._id)}>
 					<td>{i + 1}</td>
 					{render(row)}
 				</tr>
@@ -64,6 +64,7 @@ function Body({data, render}){
 Body.propTypes = {
 	data: PropTypes.array.isRequired,
 	render: PropTypes.func.isRequired,
+	onRowClick: PropTypes.func
 };
 
 Table.Head = Head;

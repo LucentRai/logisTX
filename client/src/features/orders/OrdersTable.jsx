@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import {getAllOrders} from "../../services/apiOrders";
@@ -30,6 +30,8 @@ import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 
 function OrdersTable(){
+	const navigate = useNavigate();
+
 	const {
 		data: {documents} = {},
 		isLoading
@@ -42,20 +44,26 @@ function OrdersTable(){
 		return <SpinnerFullPage />;
 	}
 
-	const orders = documents.map(order => {
+	const orders = documents.map((order, i) => {
 		return {
+			_id: order._id,
 			products: order.orderItems.map(item => item.name).join(', '),
-			customer: 'Customer Name',
+			customer: `Customer ${i + 1}`,
 			orderedDate: new Date(order.createdAt).toLocaleDateString(),
 			status: order.status
 		};
 	});
+
+	function handleRowClick(id){
+		navigate(`/maps/order=${id}`);
+	}
 
 	function render(row){
 		const tableCells = [];
 		let i = 0;
 
 		for(const key in row){
+			if(key === '_id') continue;
 			if(key === 'status'){
 				switch(row[key]){
 					case 'pending':
@@ -82,13 +90,11 @@ function OrdersTable(){
 			<Table.Head columns={["Products", "Customer", "Ordered Date", "Status"]} />
 			<Table.Body
 				data={orders}
-				render={render}/>
+				render={render}
+				onRowClick={handleRowClick}
+			/>
 		</Table>
 	);
 }
-
-OrdersTable.propTypes = {
-	data: PropTypes.array.isRequired
-};
 
 export default OrdersTable;
