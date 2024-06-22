@@ -9,6 +9,10 @@ const orderSchema = mongoose.Schema({
 		type: mongoose.Schema.ObjectId,
 		ref: 'Company',
 	},
+	customerId: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'Customer',
+	},
 	destination: {
 		type: [Number],
 		required: true,

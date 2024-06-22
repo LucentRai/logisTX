@@ -29,9 +29,7 @@ exports.getOne = (Model, populateOption) =>
 		.status(200)
 		.json({
 			status: "success",
-			data: {
-				document
-			}
+			document
 		});
 });
 
