@@ -55,7 +55,7 @@ function OrdersTable(){
 	});
 
 	function handleRowClick(id){
-		navigate(`/maps/order=${id}`);
+		navigate(`/maps?order=${id}`);
 	}
 
 	function render(row){

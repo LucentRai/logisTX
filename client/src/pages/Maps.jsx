@@ -1,18 +1,19 @@
-import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import MapOrder from './MapOrder';
+import { useSearchParams } from 'react-router-dom';
 
-import RoutingMachine from '../utils/RoutingMachine';
+// import RoutingMachine from '../utils/RoutingMachine';
 
 
 function Maps(){
+	// const mapCenter = import.meta.env.VITE_MAP_CENTER.split(',').map(coord => parseFloat(coord));
+	const [searchParams] = useSearchParams();
+	const orderId = searchParams.get('order');
 
 	return (
-		<MapContainer zoom={13} scrollWheelZoom={false}>
-			<TileLayer
-			url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-			/>
-			<RoutingMachine />
-		</MapContainer>
+		<>
+			{orderId && <MapOrder orderId={orderId} />}
+		</>
 	);
 }
 
