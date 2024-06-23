@@ -11,6 +11,7 @@ const transportSchema = mongoose.Schema({
 	companyId: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'Company',
+		required: [true, 'Please provide company id']
 	},
 	volume: {
 		type: Number,
@@ -29,7 +30,7 @@ const transportSchema = mongoose.Schema({
 	},
 	parkingLocation: {
 		type: [Number],
-		required: true,
+		required: [true, 'Please provide parking location coordinates'],
 		validate: {
 			validator: function(value) {
 				return value.length === 2 &&
