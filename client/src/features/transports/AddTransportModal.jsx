@@ -11,16 +11,9 @@ function AddTransportModal({isOpen, toggle, ...args}){
 	const {isCreating, isSuccess, createTransport} = useCreateTransport();
 	const formRef = useRef(null);
 
-	// if(!warehouses.length){
-	// 	const {isLoading, warehouses} = useWarehouses();
-	// 	const dispatch = useDispatch();
-	
-	// 	useEffect(() => {
-	// 		if(warehouses){
-	// 			dispatch({type: 'warehouses/setWarehouses', payload: warehouses});
-	// 		}
-	// 	}, [dispatch, warehouses]);
-	// }
+	useEffect(() => {
+
+	}, [warehouses.length]);
 
 	function handleSubmit(e){
 		e.preventDefault();

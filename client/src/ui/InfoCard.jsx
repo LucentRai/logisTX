@@ -33,7 +33,7 @@ InfoCard.propTypes = {
 	icon: PropTypes.node.isRequired,
 	iconStyle: PropTypes.object,
 	title: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired
+	value: PropTypes.number.isRequired
 };
 
 export default InfoCard;

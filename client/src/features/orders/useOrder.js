@@ -10,7 +10,8 @@ export function useOrder(orderId){
 		queryKey: ['order'],
 		queryFn: () => getOrderById(orderId),
 		retry: false
-		});
+	});
 
-	return { isLoading, error, order: document};
+
+	return { isLoading, error, order: document, count: document.length};
 }

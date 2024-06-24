@@ -20,6 +20,6 @@ export async function createEditProduct(newProduct, id){
 	});
 }
 
-export function getProducts(){
+export function getAllProducts(){
 	return getAll('/products');
 }

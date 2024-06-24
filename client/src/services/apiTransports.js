@@ -20,6 +20,6 @@ export async function createEditTransport(newTransport, id){
 	});
 }
 
-export function getTransports(){
+export function getAllTransports(){
 	return getAll('/transports');
 }

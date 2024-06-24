@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useQuery } from "@tanstack/react-query";
-import { getTransports } from "../../services/apiTransports";
+import { getAllTransports } from "../../services/apiTransports";
 import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 import Table from "../../ui/Table";
@@ -12,7 +12,7 @@ function TransportsTable(){
 		isLoading
 	} = useQuery({
 		queryKey: ['transports'],
-		queryFn: getTransports
+		queryFn: getAllTransports
 	});
 
 	if(isLoading){

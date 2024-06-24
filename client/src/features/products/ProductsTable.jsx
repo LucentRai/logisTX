@@ -1,17 +1,10 @@
 import Table from "../../ui/Table";
-import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../../services/apiProducts";
 import SpinnerFullPage from "../../ui/SpinnerFullPage";
+import { useProducts } from "./useProducts";
 
 
 function ProductsTable(){
-	const {
-		data: {documents: products} = {},
-		isLoading
-	} = useQuery({
-		queryKey: ['products'],
-		queryFn: getProducts
-	});
+	const {isLoading, products} = useProducts();
 
 	if(isLoading){
 		return <SpinnerFullPage />;

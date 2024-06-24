@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllWarehouses } from "../../services/apiWarehouses";
+import { getOrdersApi } from "../../services/apiOrders";
 
 
 const warehouseSlice = createSlice({
@@ -18,7 +18,7 @@ const warehouseSlice = createSlice({
 
 export function getWarehouses(){
 	return async function(dispatch){
-		const {documents: warehouses} = await getAllWarehouses();
+		const {documents: warehouses} = await getOrdersApi();
 		dispatch({type: 'warehouses/setWarehouses', payload: warehouses});
 	};
 }
