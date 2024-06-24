@@ -3,11 +3,24 @@ import {useSelector} from 'react-redux';
 import {Button, Col, Form, FormGroup, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row, Spinner} from 'reactstrap';
 import { useCreateTransport } from './useCreateTransport';
 import { useEffect, useRef } from 'react';
+import { useWarehouses } from '../warehouses/useWarehouses';
 
 function AddTransportModal({isOpen, toggle, ...args}){
+	const warehouses = useSelector(state => state.warehouses);
 	const companyId = useSelector(state => state.user.companyId);
 	const {isCreating, isSuccess, createTransport} = useCreateTransport();
 	const formRef = useRef(null);
+
+	// if(!warehouses.length){
+	// 	const {isLoading, warehouses} = useWarehouses();
+	// 	const dispatch = useDispatch();
+	
+	// 	useEffect(() => {
+	// 		if(warehouses){
+	// 			dispatch({type: 'warehouses/setWarehouses', payload: warehouses});
+	// 		}
+	// 	}, [dispatch, warehouses]);
+	// }
 
 	function handleSubmit(e){
 		e.preventDefault();

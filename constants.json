@@ -7,5 +7,6 @@
 	"MIN_PASSWORD_LENGTH": 8,
 	"ORDER_STATUS": ["pending", "processing", "completed"],
 	"PHONE_REGEX": "(\\+977)?[9][6-9]\\d{8}",
-	"PAYMENT_METHODS": ["cash", "khalti"]
+	"PAYMENT_METHODS": ["cash", "khalti"],
+	"MAP_CENTER": [27.7052955,85.334388]
 }
