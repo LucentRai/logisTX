@@ -8,8 +8,14 @@ export function useTransports(){
 		error,
 	} = useQuery({
 		queryKey: ['transports'],
-		queryFn: () => getAllTransports()
+		queryFn: getAllTransports,
+		enabled: true
 	});
 
-	return {count: transports.length, isLoading, transports, error};
+	return {
+		count: transports ? transports.length : 0,
+		isLoading,
+		transports,
+		error
+	};
 }

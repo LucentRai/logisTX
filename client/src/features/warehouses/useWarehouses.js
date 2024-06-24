@@ -11,5 +11,10 @@ export function useWarehouses(){
 		queryFn: () => getAllWarehouses()
 	});
 
-	return {count: warehouses.length, isLoading, warehouses, error};
+	return {
+		count: warehouses ? warehouses.length : 0,
+		isLoading,
+		warehouses,
+		error
+	};
 }

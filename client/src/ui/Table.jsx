@@ -62,7 +62,7 @@ function Body({data, render, onRowClick}){
 }
 
 Body.propTypes = {
-	data: PropTypes.array.isRequired,
+	data: PropTypes.array,
 	render: PropTypes.func.isRequired,
 	onRowClick: PropTypes.func
 };

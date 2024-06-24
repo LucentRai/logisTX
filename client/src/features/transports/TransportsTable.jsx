@@ -1,19 +1,11 @@
-import PropTypes from "prop-types";
-import { useQuery } from "@tanstack/react-query";
-import { getAllTransports } from "../../services/apiTransports";
 import SpinnerFullPage from "../../ui/SpinnerFullPage";
 
 import Table from "../../ui/Table";
+import { useTransports } from "./useTransports";
 
 
 function TransportsTable(){
-	const {
-		data: {documents: transports} = {},
-		isLoading
-	} = useQuery({
-		queryKey: ['transports'],
-		queryFn: getAllTransports
-	});
+	const {isLoading, transports} = useTransports();
 
 	if(isLoading){
 		return <SpinnerFullPage />;
@@ -46,9 +38,5 @@ function TransportsTable(){
 		</Table>
 	);
 }
-
-TransportsTable.propTypes = {
-	data: PropTypes.array.isRequired
-};
 
 export default TransportsTable;

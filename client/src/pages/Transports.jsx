@@ -3,7 +3,6 @@ import TransportsTable from "../features/transports/TransportsTable";
 
 
 function Transports(){
-	const data = [];
 
 	return (
 		<>
@@ -13,7 +12,7 @@ function Transports(){
 		</div>
 		<section className="section">
 			<div className="row">
-				<TransportsTable data={data} />
+				<TransportsTable />
 			</div>
 		</section>
 		</>
