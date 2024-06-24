@@ -39,5 +39,8 @@
 		"nodemailer": "^6.9.1",
 		"slugify": "^1.6.5",
 		"validator": "^13.9.0"
+	},
+	"devDependencies": {
+		"commander": "^12.1.0"
 	}
 }
