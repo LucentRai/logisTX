@@ -19,6 +19,10 @@ const companySchema = mongoose.Schema({
 		required: [true, 'Please provide company address'],
 		maxLength: [MAX_ADDRESS_LENGTH, `An address must have less or equal than ${MAX_ADDRESS_LENGTH} characters`],
 		minLength: [MIN_ADDRESS_LENGTH, `An address must have more or equal than ${MIN_ADDRESS_LENGTH} characters`]
+	},
+	employees: {
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: 'User'
 	}
 });
 
