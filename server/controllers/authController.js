@@ -46,6 +46,8 @@ async function signup(req, res, next){
 		password: req.body.password,
 	});
 
+	await newCompany.updateOne({$push: {employees: newUser._id}});
+
 	sendTokenResponse(newUser, 201, res);
 }
 
