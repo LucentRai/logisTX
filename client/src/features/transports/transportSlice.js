@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTransportApi } from "../../services/apiTransports";
+import { getAllTransports } from "../../services/apiTransports";
 
 
 const transportSlice = createSlice({
@@ -18,7 +18,7 @@ const transportSlice = createSlice({
 
 export function getTransports(){
 	return async function(dispatch){
-		const {documents: transports} = await getTransportApi();
+		const {documents: transports} = await getAllTransports();
 		dispatch({type: 'transports/setTransports', payload: transports});
 	};
 }

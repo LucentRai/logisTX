@@ -3,17 +3,12 @@ import {useSelector} from 'react-redux';
 import {Button, Col, Form, FormGroup, FormText, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row, Spinner} from 'reactstrap';
 import { useCreateTransport } from './useCreateTransport';
 import { useEffect, useRef } from 'react';
-import { useWarehouses } from '../warehouses/useWarehouses';
 
 function AddTransportModal({isOpen, toggle, ...args}){
 	const warehouses = useSelector(state => state.warehouses);
 	const companyId = useSelector(state => state.user.companyId);
 	const {isCreating, isSuccess, createTransport} = useCreateTransport();
 	const formRef = useRef(null);
-
-	useEffect(() => {
-
-	}, [warehouses.length]);
 
 	function handleSubmit(e){
 		e.preventDefault();
@@ -123,6 +118,11 @@ function AddTransportModal({isOpen, toggle, ...args}){
 								>
 									<option value="" disabled>Select Parking Location</option>
 									<option value="onMap">Select in map</option>
+									{warehouses.map(warehouse => (
+										<option key={warehouse._id} value={warehouse.location.coordinates}>
+											{warehouse.name}
+										</option>
+									))}
 								</Input>
 							</FormGroup>
 						</Col>

@@ -1,8 +1,5 @@
 const Warehouse = require('../models/warehouseModel');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/AppError');
 const factory = require('../controllers/handlerFactory');
-
 
 
 module.exports = {
