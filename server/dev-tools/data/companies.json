@@ -2,16 +2,36 @@
 	{
 		"_id": "60d21b4667d0d8992e610c85",
 		"name": "Pashupati Pvt. Ltd.",
-		"address": "Kathmandu, Bagmati, Nepal"
+		"address": "Kathmandu, Bagmati, Nepal",
+		"employees": [
+			"60d21b5067d0d8992e610c88",
+			"60d21b5c67d0d8992e610c8b",
+			"60d21b6467d0d8992e610c8d",
+			"60d21b7067d0d8992e610c90",
+			"60d21b7c67d0d8992e610c93"
+		]
 	},
 	{
 		"_id": "60d21b4967d0d8992e610c86",
 		"name": "Sagarmatha Enterprises",
-		"address": "Lalitpur, Bagmati, Nepal"
+		"address": "Lalitpur, Bagmati, Nepal",
+		"employees": [
+			"60d21b5467d0d8992e610c89",
+			"60d21b6067d0d8992e610c8c",
+			"60d21b6867d0d8992e610c8e",
+			"60d21b7467d0d8992e610c91",
+			"60d21b8467d0d8992e610c94"
+		]
 	},
 	{
 		"_id": "60d21b4c67d0d8992e610c87",
 		"name": "Everest Tech Solutions",
-		"address": "Bhaktapur, Bagmati, Nepal"
+		"address": "Bhaktapur, Bagmati, Nepal",
+		"employees": [
+			"60d21b5867d0d8992e610c8a",
+			"60d21b6c67d0d8992e610c8f",
+			"60d21b7067d0d8992e610c90",
+			"60d21b7c67d0d8992e610c92"
+		]
 	}
 ]
