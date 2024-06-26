@@ -30,6 +30,11 @@ const productSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now()
 	},
+	createdBy: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'User',
+		required: [true, 'Please provide user ID']
+	},
 	imgUrl: {
 		type: [String],
 		default: ['placeholder-product-img.jpg']

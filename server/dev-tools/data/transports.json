@@ -1,0 +1,122 @@
+[
+	{
+		"name": "Toyota Hiace",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"volume": 10,
+		"maxCapacity": 1200,
+		"maxSpeed": 100,
+		"parkingLocation": [27.7172, 85.3240]
+	},
+	{
+		"name": "Nissan Navara",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"volume": 15,
+		"maxCapacity": 1500,
+		"maxSpeed": 110,
+		"parkingLocation": [27.7180, 85.3232]
+	},
+	{
+		"name": "Ford Transit",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"volume": 20,
+		"maxCapacity": 2000,
+		"maxSpeed": 120,
+		"parkingLocation": [27.7191, 85.3245]
+	},
+	{
+		"name": "Mercedes Sprinter",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"volume": 25,
+		"maxCapacity": 2200,
+		"maxSpeed": 130,
+		"parkingLocation": [27.7175, 85.3250]
+	},
+	{
+		"name": "Hyundai H1",
+		"companyId": "60d21b4667d0d8992e610c85",
+		"volume": 30,
+		"maxCapacity": 2500,
+		"maxSpeed": 140,
+		"parkingLocation": [27.7185, 85.3230]
+	},
+	{
+		"name": "Isuzu D-Max",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"volume": 12,
+		"maxCapacity": 1300,
+		"maxSpeed": 105,
+		"parkingLocation": [27.6676, 85.3222]
+	},
+	{
+		"name": "Mitsubishi L300",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"volume": 18,
+		"maxCapacity": 1600,
+		"maxSpeed": 115,
+		"parkingLocation": [27.6685, 85.3215]
+	},
+	{
+		"name": "Tata Xenon",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"volume": 22,
+		"maxCapacity": 2100,
+		"maxSpeed": 125,
+		"parkingLocation": [27.6690, 85.3233]
+	},
+	{
+		"name": "Mahindra Bolero",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"volume": 28,
+		"maxCapacity": 2300,
+		"maxSpeed": 135,
+		"parkingLocation": [27.6672, 85.3241]
+	},
+	{
+		"name": "Ashok Leyland Dost",
+		"companyId": "60d21b4967d0d8992e610c86",
+		"volume": 32,
+		"maxCapacity": 2600,
+		"maxSpeed": 145,
+		"parkingLocation": [27.6680, 85.3220]
+	},
+	{
+		"name": "Volkswagen Crafter",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"volume": 14,
+		"maxCapacity": 1400,
+		"maxSpeed": 110,
+		"parkingLocation": [27.6710, 85.4298]
+	},
+	{
+		"name": "Renault Trafic",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"volume": 19,
+		"maxCapacity": 1700,
+		"maxSpeed": 120,
+		"parkingLocation": [27.6720, 85.4287]
+	},
+	{
+		"name": "Peugeot Boxer",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"volume": 24,
+		"maxCapacity": 2200,
+		"maxSpeed": 130,
+		"parkingLocation": [27.6715, 85.4290]
+	},
+	{
+		"name": "Fiat Ducato",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"volume": 29,
+		"maxCapacity": 2400,
+		"maxSpeed": 140,
+		"parkingLocation": [27.6705, 85.4300]
+	},
+	{
+		"name": "Iveco Daily",
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"volume": 34,
+		"maxCapacity": 2700,
+		"maxSpeed": 150,
+		"parkingLocation": [27.6725, 85.4280]
+	}
+]

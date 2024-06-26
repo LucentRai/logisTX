@@ -1,0 +1,222 @@
+[
+	{
+			"name": "Product A1",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product A1",
+			"price": 25.50,
+			"stockQuantity": 100,
+			"createdBy": "60d21b5067d0d8992e610c88",
+			"weight": 1.5,
+			"dimensions": [0.5, 0.3, 0.2],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	},
+	{
+			"name": "Product A2",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product A2",
+			"price": 30.00,
+			"stockQuantity": 150,
+			"createdBy": "60d21b5c67d0d8992e610c8b",
+			"weight": 2.0,
+			"dimensions": [0.6, 0.4, 0.3],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	},
+	{
+			"name": "Product A3",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product A3",
+			"price": 45.99,
+			"stockQuantity": 200,
+			"createdBy": "60d21b6467d0d8992e610c8d",
+			"weight": 2.5,
+			"dimensions": [0.7, 0.5, 0.4],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	},
+	{
+			"name": "Product A4",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product A4",
+			"price": 50.00,
+			"stockQuantity": 50,
+			"createdBy": "60d21b7067d0d8992e610c90",
+			"weight": 3.0,
+			"dimensions": [0.8, 0.6, 0.5],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	},
+	{
+			"name": "Product A5",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product A5",
+			"price": 55.75,
+			"stockQuantity": 75,
+			"createdBy": "60d21b8067d0d8992e610c93",
+			"weight": 3.5,
+			"dimensions": [0.9, 0.7, 0.6],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	},
+	{
+			"name": "Product B1",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product B1",
+			"price": 20.00,
+			"stockQuantity": 120,
+			"createdBy": "60d21b5467d0d8992e610c89",
+			"weight": 1.0,
+			"dimensions": [0.4, 0.3, 0.2],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product B2",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product B2",
+			"price": 35.00,
+			"stockQuantity": 130,
+			"createdBy": "60d21b6067d0d8992e610c8c",
+			"weight": 1.8,
+			"dimensions": [0.5, 0.4, 0.3],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product B3",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product B3",
+			"price": 40.00,
+			"stockQuantity": 140,
+			"createdBy": "60d21b6867d0d8992e610c8e",
+			"weight": 2.2,
+			"dimensions": [0.6, 0.5, 0.4],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product B4",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product B4",
+			"price": 42.50,
+			"stockQuantity": 160,
+			"createdBy": "60d21b7467d0d8992e610c91",
+			"weight": 2.7,
+			"dimensions": [0.7, 0.6, 0.5],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product B5",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product B5",
+			"price": 48.00,
+			"stockQuantity": 180,
+			"createdBy": "60d21b8467d0d8992e610c94",
+			"weight": 3.1,
+			"dimensions": [0.8, 0.7, 0.6],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product C1",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product C1",
+			"price": 22.00,
+			"stockQuantity": 110,
+			"createdBy": "60d21b5867d0d8992e610c8a",
+			"weight": 1.2,
+			"dimensions": [0.4, 0.3, 0.2],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product C2",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product C2",
+			"price": 28.00,
+			"stockQuantity": 140,
+			"createdBy": "60d21b6c67d0d8992e610c8f",
+			"weight": 1.7,
+			"dimensions": [0.5, 0.4, 0.3],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product C3",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product C3",
+			"price": 32.00,
+			"stockQuantity": 170,
+			"createdBy": "60d21b7067d0d8992e610c90",
+			"weight": 2.1,
+			"dimensions": [0.6, 0.5, 0.4],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product C4",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product C4",
+			"price": 38.00,
+			"stockQuantity": 190,
+			"createdBy": "60d21b7c67d0d8992e610c93",
+			"weight": 2.6,
+			"dimensions": [0.7, 0.6, 0.5],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product C5",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product C5",
+			"price": 44.00,
+			"stockQuantity": 200,
+			"createdBy": "60d21b8067d0d8992e610c93",
+			"weight": 3.2,
+			"dimensions": [0.8, 0.7, 0.6],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product D1",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product D1",
+			"price": 23.50,
+			"stockQuantity": 125,
+			"createdBy": "60d21b4c67d0d8992e610c87",
+			"weight": 1.3,
+			"dimensions": [0.4, 0.3, 0.2],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product D2",
+			"companyId": "60d21b4967d0d8992e610c86",
+			"description": "High-quality product D2",
+			"price": 27.50,
+			"stockQuantity": 135,
+			"createdBy": "60d21b5067d0d8992e610c88",
+			"weight": 1.8,
+			"dimensions": [0.5, 0.4, 0.3],
+			"warehouseId": "60d21b8467d0d8992e610c93"
+	},
+	{
+			"name": "Product D3",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product D3",
+			"price": 33.50,
+			"stockQuantity": 145,
+			"createdBy": "60d21b5867d0d8992e610c8a",
+			"weight": 2.3,
+			"dimensions": [0.6, 0.5, 0.4],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product D4",
+			"companyId": "60d21b4c67d0d8992e610c87",
+			"description": "High-quality product D4",
+			"price": 37.50,
+			"stockQuantity": 155,
+			"createdBy": "60d21b5c67d0d8992e610c8b",
+			"weight": 2.9,
+			"dimensions": [0.7, 0.6, 0.5],
+			"warehouseId": "60d21b8867d0d8992e610c94"
+	},
+	{
+			"name": "Product D5",
+			"companyId": "60d21b4667d0d8992e610c85",
+			"description": "High-quality product D5",
+			"price": 43.50,
+			"stockQuantity": 165,
+			"createdBy": "60d21b6467d0d8992e610c8d",
+			"weight": 3.3,
+			"dimensions": [0.8, 0.7, 0.6],
+			"warehouseId": "60d21b8067d0d8992e610c92"
+	}
+]
