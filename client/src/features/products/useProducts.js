@@ -4,13 +4,17 @@ import { getAllProducts } from "../../services/apiProducts";
 export function useProducts(){
 	const {
 		data: {documents: products} = {},
+		error,
 		isLoading
 	} = useQuery({
 		queryKey: ['products'],
 		queryFn: getAllProducts
 	});
 
-	console.log(products);
-
-	return {count: products.length, products, isLoading};
+	return {
+		count: products? products.length : 0,
+		error,
+		isLoading,
+		products,
+	};
 }
