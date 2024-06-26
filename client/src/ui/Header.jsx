@@ -22,7 +22,7 @@ function Header(){
 							<img src="/img/default-profile-img.png" alt="Profile name" width="32" height="32" className="rounded-circle" />
 						</a>
 						<ul className="dropdown-menu text-small shadow">
-							<li><a className="dropdown-item" href="#"><PersonCircle /> {`${firstname}'s Profile`}</a></li>
+							<li><a className="dropdown-item" href="/profile"><PersonCircle /> {`${firstname}'s Profile`}</a></li>
 							<li><a className="dropdown-item" href="#"><Gear /> Settings</a></li>
 							<li><hr className="dropdown-divider" /></li>
 							<li><a className="dropdown-item" href="#"><BoxArrowLeft /> Sign out</a></li>

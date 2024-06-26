@@ -30,6 +30,18 @@ function AddTransportModal({isOpen, toggle, ...args}){
 		}
 	}, [isSuccess]);
 
+	function handleParkingChange(e){
+		const selectedIndex = e.target.selectedIndex;
+		const latlng = e.target.options[selectedIndex].value;
+		if(latlng === 'onMap'){
+			// Show map modal
+		}else{
+			const [lat, lng] = latlng.split(',');
+			formRef.current.lat.value = lat;
+			formRef.current.lng.value = lng;
+		}
+	}
+
 
 	return (
 		<Modal isOpen={isOpen} toggle={toggle} {...args} size="xl">
@@ -114,6 +126,7 @@ function AddTransportModal({isOpen, toggle, ...args}){
 									name="parkingLocation"
 									type="select"
 									placeholder="Select Location"
+									onChange={handleParkingChange}
 									required
 								>
 									<option value="" disabled>Select Parking Location</option>
