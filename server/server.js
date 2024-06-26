@@ -5,6 +5,8 @@ dotenv.config({path: './constants.env'});
 
 const app = require('./app');
 
+mongoose.set('strictQuery', true);
+
 mongoose
 	// .connect(process.env.DB.replace('<password>', process.env.DB_PASSWORD))
 	.connect(process.env.DB_LOCAL)
