@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function useOrder(orderId){
 	const {
-		data: {document} = {},
+		data: {document: order} = {},
 		error,
 		isLoading
 	} = useQuery({
@@ -12,6 +12,10 @@ export function useOrder(orderId){
 		retry: false
 	});
 
-
-	return { isLoading, error, order: document, count: document.length};
+	return {
+		count: order ? order.length : 0,
+		error,
+		isLoading,
+		order
+	};
 }
