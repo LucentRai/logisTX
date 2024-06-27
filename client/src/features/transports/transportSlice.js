@@ -6,7 +6,7 @@ const transportSlice = createSlice({
 	name: 'transports',
 	initialState: [],
 	reducers: {
-		setWarehouses(state, action){
+		setTransports(state, action){
 			state.length = 0;
 			const transports = action.payload;
 			transports.forEach(transport => {

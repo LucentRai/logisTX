@@ -5,12 +5,16 @@ import Header from '../ui/Header';
 import Sidebar from '../ui/Sidebar';
 import Footer from '../ui/Footer';
 
+import { getTransports } from "../features/transports/transportSlice";
+import { getWarehouses } from "../features/warehouses/warehouseSlice";
 import { setUserInfo } from '../features/users/userSlice';
 
 function AppLayout() {
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem('user'));
 	dispatch(setUserInfo(user));
+	dispatch(getTransports());
+	dispatch(getWarehouses());
 
 	return (
 		<>

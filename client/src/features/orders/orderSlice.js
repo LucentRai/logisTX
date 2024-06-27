@@ -1,26 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getOrdersApi } from "../../services/apiOrders";
+import { getAllOrders } from "../../services/apiOrders";
 
 
-const warehouseSlice = createSlice({
-	name: 'warehouses',
+const orderSlice = createSlice({
+	name: 'orders',
 	initialState: [],
 	reducers: {
-		setWarehouses(state, action){
+		setOrders(state, action){
 			state.length = 0;
-			const warehouses = action.payload;
-			warehouses.forEach(warehouse => {
-				state.push(warehouse);
+			const orders = action.payload;
+			orders.forEach(order => {
+				state.push(order);
 			});
 		}
 	}
 });
 
-export function getWarehouses(){
+export function getOrders(){
 	return async function(dispatch){
-		const {documents: warehouses} = await getOrdersApi();
-		dispatch({type: 'warehouses/setWarehouses', payload: warehouses});
+		const {documents: orders} = await getAllOrders();
+		dispatch({type: 'orders/setOrders', payload: orders});
 	};
 }
 
-export default warehouseSlice.reducer;
+export default orderSlice.reducer;

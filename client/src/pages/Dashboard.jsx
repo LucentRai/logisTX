@@ -1,23 +1,18 @@
 import { BoxSeamFill, Building, FilePersonFill, Truck } from "react-bootstrap-icons";
-import { useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 
 import InfoCard from "../ui/InfoCard";
 import { useWarehouses } from "../features/warehouses/useWarehouses";
 import { useTransports } from "../features/transports/useTransports";
 import SpinnerFullPage from "../ui/SpinnerFullPage";
 import { useOrders } from "../features/orders/useOrders";
-import { getTransports } from "../features/transports/transportSlice";
-import { getWarehouses } from "../features/warehouses/warehouseSlice";
 
 function Dashboard(){
 	const companyName = useSelector(state => state.user.company.name);
 	const {isLoading: isLoadingOrders, count: ordersCount} = useOrders();
 	const {isLoading: isLoadingTransports, transports} = useTransports();
 	const {isLoading: isLoadingWarehouses, warehouses} = useWarehouses();
-	const dispatch = useDispatch();
 
-	dispatch(getTransports());
-	dispatch(getWarehouses());
 
 	if(isLoadingOrders || isLoadingWarehouses || isLoadingTransports){
 		return <SpinnerFullPage />;
