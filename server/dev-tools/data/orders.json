@@ -1,0 +1,62 @@
+[
+	{
+		"companyId": "60d21b4667d0d8992e610c85",
+		"customerId": "667d02da029f8753da18b7d8",
+		"destination": [27.7172, 85.3240],
+		"createdAt": "2024-06-26T00:00:00.000Z",
+		"updatedAt": "2024-06-26T00:00:00.000Z",
+		"status": "pending",
+		"orderItems": [
+			"667b83b2ff7556101ce90d88",
+			"667b83b2ff7556101ce90d89",
+			"667b83b2ff7556101ce90d8c",
+			"667b83b2ff7556101ce90d8d"
+		],
+		"paymentMethod": "cash"
+	},
+	{
+		"companyId": "60d21b4967d0d8992e610c86",
+		"customerId": "667d03fd22d0e6a2c51826ce",
+		"destination": [27.6667, 85.3333],
+		"createdAt": "2024-06-26T00:00:00.000Z",
+		"updatedAt": "2024-06-26T00:00:00.000Z",
+		"status": "pending",
+		"orderItems": [
+			"667b83b2ff7556101ce90d8e",
+			"667b83b2ff7556101ce90d8f",
+			"667b83b2ff7556101ce90d90",
+			"667b83b2ff7556101ce90d91"
+		],
+		"paymentMethod": "cash"
+	},
+	{
+		"companyId": "60d21b4c67d0d8992e610c87",
+		"customerId": "667d03fd22d0e6a2c51826cc",
+		"destination": [27.6710, 85.4298],
+		"createdAt": "2024-06-26T00:00:00.000Z",
+		"updatedAt": "2024-06-26T00:00:00.000Z",
+		"status": "pending",
+		"orderItems": [
+			"667b83b2ff7556101ce90d8a",
+			"667b83b2ff7556101ce90d93",
+			"667b83b2ff7556101ce90d94",
+			"667b83b2ff7556101ce90d95"
+		],
+		"paymentMethod": "cash"
+	},
+	{
+		"companyId": "60d21b4667d0d8992e610c85",
+		"customerId": "667d03fd22d0e6a2c51826d0",
+		"destination": [27.7172, 85.3240],
+		"createdAt": "2024-06-26T00:00:00.000Z",
+		"updatedAt": "2024-06-26T00:00:00.000Z",
+		"status": "pending",
+		"orderItems": [
+			"667b83b2ff7556101ce90d96",
+			"667b83b2ff7556101ce90d8b",
+			"667b83b2ff7556101ce90d98",
+			"667b83b2ff7556101ce90d99"
+		],
+		"paymentMethod": "cash"
+	}
+]
