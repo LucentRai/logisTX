@@ -49,8 +49,18 @@ exports.getAll = (Model, populateOption) =>
 			.limitFields()
 			.paginate();
 
-		if(populateOption){
-			features.query = features.query.populate(populateOption);
+		// if(populateOption){
+		// 	features.query = features.query.populate(populateOption);
+		// }
+		if (populateOption) {
+			if (Array.isArray(populateOption)) {
+				populateOption.forEach(option => {
+					features.query = features.query.populate(option);
+				});
+			}
+			else {
+				features.query = features.query.populate(populateOption);
+			}
 		}
 
 		// const document = await features.query.explain(); // for stats about query
