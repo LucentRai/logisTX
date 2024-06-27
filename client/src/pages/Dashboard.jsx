@@ -27,14 +27,38 @@ function Dashboard(){
 					{/*  Left side columns */}
 					<div className="col-lg-8">
 						<div className="row">
-							<InfoCard href="/orders" icon={<BoxSeamFill />} iconStyle={{color: "#ff771d", background: "#ffe3c0"}} title="Orders" value={ordersCount}>
+							<InfoCard
+								href="/orders"
+								icon={<BoxSeamFill />}
+								iconStyle={{color: "#ff771d", background: "#ffe3c0"}}
+								title="Orders"
+								value={ordersCount}
+							>
 								<span className="text-success small pt-1 fw-bold">80%</span> <span>Fulfilled</span>
 							</InfoCard>
-							<InfoCard href="/transports"  icon={<Truck />} iconStyle={{color: "#4154f1", background: "#dce0ff"}}  title="Transports" value={transports.length ?? 0}>
+							<InfoCard
+								href="/transports"
+								icon={<Truck />}
+								iconStyle={{color: "#4154f1", background: "#dce0ff"}}
+								title="Transports"
+								value={transports.length ?? 0}
+							>
 								<span className="text-success small pt-1 fw-bold">8</span> <span>delivering</span>
 							</InfoCard>
-							<InfoCard href="/warehouses"  icon={<Building />} iconStyle={{color: "#9cf141", background: "#dce0ff"}}  title="Warehouses" value={warehouses.length} />
-							<InfoCard href="/employees"  icon={<FilePersonFill />} iconStyle={{color: "#2eca6a", background: "#d5ffde"}} title="Employees" value={123} />
+							<InfoCard
+								href="/warehouses"
+								icon={<Building />}
+								iconStyle={{color: "#9cf141", background: "#dce0ff"}}
+								title="Warehouses"
+								value={warehouses.length}
+							/>
+							<InfoCard
+								href="/employees"
+								icon={<FilePersonFill />}
+								iconStyle={{color: "#2eca6a", background: "#d5ffde"}}
+								title="Employees"
+								value={123}
+							/>
 						</div>
 					</div>
 					{/*  End Left side columns */}
