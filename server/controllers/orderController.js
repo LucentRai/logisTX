@@ -6,7 +6,10 @@ const factory = require('../controllers/handlerFactory');
 
 
 module.exports = {
-	getOrder: factory.getOne(Order),
+	getOrder: factory.getOne(Order, [
+		{path: 'orderItems', select: 'name warehouseId'},
+		{path: 'customerId', select: 'name address'}
+	]),
 	getAllOrders: factory.getAll(Order, [
 		{path: 'orderItems', select: 'name'},
 		{path: 'customerId', select: 'name'}

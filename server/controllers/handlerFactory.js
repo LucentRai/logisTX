@@ -16,9 +16,18 @@ exports.createOne = Model =>
 exports.getOne = (Model, populateOption) =>
 	catchAsync( async (req, res, next) => {
 		let query = Model.findById(req.params.id);
-		if(populateOption){
-			query = query.populate(populateOption);
+
+		if (populateOption) {
+			if (Array.isArray(populateOption)) {
+				populateOption.forEach(option => {
+					query = query.populate(option);
+				});
+			}
+			else {
+				query = query.populate(populateOption);
+			}
 		}
+
 		const document = await query;
 
 		if(!document){
@@ -49,9 +58,6 @@ exports.getAll = (Model, populateOption) =>
 			.limitFields()
 			.paginate();
 
-		// if(populateOption){
-		// 	features.query = features.query.populate(populateOption);
-		// }
 		if (populateOption) {
 			if (Array.isArray(populateOption)) {
 				populateOption.forEach(option => {
