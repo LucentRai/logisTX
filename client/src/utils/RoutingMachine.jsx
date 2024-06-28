@@ -4,10 +4,10 @@ import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 
 
-function createRoutingMachineLayer() {
+function createRoutingMachineLayer({waypoints}) {
 	const routeLineColor = getComputedStyle(document.documentElement).getPropertyValue('--clr-map-route-line');
 	const instance = L.Routing.control({
-		waypoints: [[27.7049, 85.3270], [27.6559, 85.3150]],
+		waypoints,
 		lineOptions: {
 			styles: [{ color: routeLineColor, weight: 4 }]
 		},

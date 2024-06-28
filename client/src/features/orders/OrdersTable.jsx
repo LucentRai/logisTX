@@ -47,7 +47,6 @@ function OrdersTable(){
 		};
 	});
 
-	console.log(tableData);
 	function handleRowClick(id){
 		navigate(`/maps?order=${id}`);
 	}

@@ -5,19 +5,21 @@ import 'leaflet/dist/leaflet.css';
 import SpinnerFullPage from '../ui/SpinnerFullPage';
 import { useOrder } from '../features/orders/useOrder';
 import NotFound from './NotFound';
-import { useEffect } from 'react';
+import RoutingMachine from '../utils/RoutingMachine';
+import { useSelector } from 'react-redux';
 
 
 function MapOrder({orderId}){
 	const {isLoading, order} = useOrder(orderId);
-
-	useEffect(() => {
-		console.log(order);
-	}, [order]);
+	const warehouses = useSelector(state => state.warehouses);
 
 	if(isLoading) return <SpinnerFullPage />;
-
 	if(!order) return <NotFound />;
+
+	const waypoints = order.orderItems.map(product => {
+		const warehouse = warehouses.find(warehouse => warehouse._id === product.warehouseId);
+		return warehouse.location;
+	});
 
 
 	return (
@@ -27,10 +29,10 @@ function MapOrder({orderId}){
 			/>
 			<Marker position={order.destination}>
 				<Popup>
-					Customer Name
+					{order.customerId.name}<br /> {order.customerId.address}
 				</Popup>
 			</Marker>
-			{/* <RoutingMachine /> */}
+			<RoutingMachine waypoints={waypoints} />
 		</MapContainer>
 	);
 }
