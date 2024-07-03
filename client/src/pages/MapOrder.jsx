@@ -20,7 +20,7 @@ function MapOrder({orderId}){
 		const warehouse = warehouses.find(warehouse => warehouse._id === product.warehouseId);
 		return warehouse.location;
 	});
-
+	waypoints.push(order.customerId.location);
 
 	return (
 		<MapContainer center={order.destination} zoom={13} scrollWheelZoom={false}>
