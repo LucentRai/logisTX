@@ -1,11 +1,27 @@
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 function SidebarDevButtons(){
 
-	function handleImport(){
-	
+	async function handleImport(){
+		axios.post('/dev/import')
+			.then(() => toast.success('All data imported'))
+			.catch(err => {
+				toast.error('Error importing data');
+				console.error(err);
+			});
 	}
 
-	function handleDelete(){
-
+	async function handleDelete(){
+		axios.delete('/dev')
+			.then(() => {
+				toast.success('All data deleted');
+				window.location.reload();
+			})
+			.catch(err => {
+				toast.error('Error deleting data');
+				console.error(err);
+			});
 	}
 
 	return (

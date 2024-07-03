@@ -30,11 +30,8 @@ app.use(cookieParser()); // parse data from cookie
 // Data sanitization to prevent NoSQL injections
 app.use(mongoSanitize()); // replaces mongo operators from user input
 
-// Logging in development
-if(process.env.NODE_ENV === 'development'){
-	const morgan = require('morgan');
-	app.use(morgan('dev'));
-}app.use(compresssion());
+
+app.use(compresssion());
 
 
 /****************************** ROUTERS ******************************/
@@ -55,6 +52,13 @@ app.use('/api/v1/products', productRouter);
 app.use('/api/v1/transports', transportRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/warehouses', warehouseRouter);
+
+
+if(process.env.NODE_ENV === 'development'){
+	const morgan = require('morgan'); // Logging in development
+	app.use(morgan('dev'));
+	app.use('/api/v1/dev', require('./routes/devRoute'));
+}
 
 app.use('*', (req, res, next) => {
 	next(new AppError(`Cannot find ${req.originalUrl} on the server`, 404));
