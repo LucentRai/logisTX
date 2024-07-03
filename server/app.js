@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const rateLimit = require('express-rate-limit');
+// const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const compresssion = require('compression');
@@ -17,11 +17,11 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Restrict requests to avoid DOS attacks
-app.use('/api', rateLimit({
-	max: 100, // maximum number of requests from 1 IP in certain window of time
-	windowMs: 60 * 60 * 100, // Window in milli seconds
-	message: 'Too many requests from this IP, please try again in 1 hour'
-}));
+// app.use('/api', rateLimit({
+// 	max: 100, // maximum number of requests from 1 IP in certain window of time
+// 	windowMs: 60 * 60 * 100, // Window in milli seconds
+// 	message: 'Too many requests from this IP, please try again in 1 hour'
+// }));
 
 // Reading data from body into request.body
 app.use(express.json({limit: '10kb'})); // limits the size of request data
