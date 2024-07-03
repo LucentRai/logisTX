@@ -27,12 +27,12 @@ function MapOrder({orderId}){
 			<TileLayer
 			url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
-			<Marker position={order.destination}>
+			<RoutingMachine waypoints={waypoints} />
+			<Marker position={order.destination} style={{backgroundColor: 'red'}}>
 				<Popup>
 					{order.customerId.name}<br /> {order.customerId.address}
 				</Popup>
 			</Marker>
-			<RoutingMachine waypoints={waypoints} />
 		</MapContainer>
 	);
 }

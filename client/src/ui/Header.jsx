@@ -25,7 +25,7 @@ function Header(){
 							<li><a className="dropdown-item" href="/profile"><PersonCircle /> {`${firstname}'s Profile`}</a></li>
 							<li><a className="dropdown-item" href="#"><Gear /> Settings</a></li>
 							<li><hr className="dropdown-divider" /></li>
-							<li><a className="dropdown-item" href="#"><BoxArrowLeft /> Sign out</a></li>
+							<li><a className="dropdown-item" href="/"><BoxArrowLeft /> Sign out</a></li>
 						</ul>
 					</div>
 				</div>
