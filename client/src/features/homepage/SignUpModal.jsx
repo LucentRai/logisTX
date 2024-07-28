@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 import { MAX_COMPANY_NAME_LENGTH, MAX_NAME_LENGTH, MIN_NAME_LENGTH, MAX_ADDRESS_LENGTH, MIN_ADDRESS_LENGTH, PHONE_REGEX } from "../../../../constants.json";
 import axios from "axios";
+import { FormGroup, Input, Label } from "reactstrap";
 
 const phoneRegexPattern = new RegExp(PHONE_REGEX);
 
@@ -199,12 +200,19 @@ function SignUpModal(){
 							placeholder="Enter Company Address"
 							error={state.errors?.address}
 							feedback={state.showFeedback} />
-						<TextInput
-							label="Role"
-							size={4}
-							name="role"
-							placeholder="Position in the Company"
-							feedback={state.showFeedback} />
+							<FormGroup
+								className="col-md-4"
+							>
+								<Label for="package">Package</Label>
+							<Input
+							id="package"
+								name="package"
+								type="select"
+								>
+								<option value="Basic">Basic</option>
+								<option value="Standard">Standard</option>
+							</Input>
+								</FormGroup>
 						<TextInput
 							label="Phone Number"
 							size={4}
